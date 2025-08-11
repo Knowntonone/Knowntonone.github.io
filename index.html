@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap"
     rel="stylesheet"
   />
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -25,13 +26,14 @@
       --secondary-text: #a0a0a0;
       --accent-color: #ff0033; /* A vibrant, "hacker" red */
       --accent-glow: rgba(255, 0, 51, 0.5);
-      --card-bg: rgba(17, 17, 17, 0.9);
+      --card-bg: #111111;
       --border-color: #2a2a2a;
       --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       --accent-shadow: 0 0 15px var(--accent-glow);
-      --font-display: "Orbitron", sans-serif;
-      --font-mono: "JetBrains Mono", monospace;
-      --font-sans: "Roboto", sans-serif;
+
+      --font-display: "Orbitron", sans-serif; /* For big, impactful headings */
+      --font-mono: "JetBrains Mono", monospace; /* For a modern, clean code feel */
+      --font-sans: "Roboto", sans-serif; /* For readable body text */
     }
 
     * {
@@ -50,24 +52,29 @@
       font-family: var(--font-sans);
       line-height: 1.7;
       overflow-x: hidden;
-      background-image: url("https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2274&auto=format&fit=crop");
+
+      /* --- Anime Hacker Background Theme --- */
+      background-image: url(
+        "https://images.unsplash.com/photo-1581333100695-5443bab6f2b9?q=80&w=2070&auto=format&fit=crop"
+      );
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
       position: relative;
     }
 
+    /* --- Dark Overlay for Readability --- */
     body::before {
       content: "";
-      position: fixed;
+      position: fixed; /* Fixed position to cover viewport */
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: linear-gradient(
         180deg,
-        rgba(10, 10, 10, 0.98) 0%,
-        rgba(10, 10, 10, 0.92) 100%
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.85) 100%
       );
       z-index: -1;
     }
@@ -104,7 +111,9 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
       text-shadow: 0 0 5px var(--accent-glow);
     }
-    .logo span { color: var(--accent-color); }
+    .logo span {
+      color: var(--accent-color);
+    }
     .logo:hover {
       color: var(--accent-color);
       text-shadow: 0 0 15px var(--accent-glow);
@@ -115,6 +124,7 @@
       gap: 2rem;
       list-style: none;
     }
+
     .nav-links a {
       color: var(--secondary-text);
       text-decoration: none;
@@ -124,7 +134,9 @@
       transition: color 0.3s ease;
       padding: 5px 0;
     }
-    .nav-links a:hover { color: var(--accent-color); }
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -149,32 +161,55 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 4rem 0;
     }
+
     .hero-content h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-size: 4rem;
       font-weight: 900;
       color: var(--primary-text);
       margin-bottom: 1rem;
-      letter-spacing: 2px;
-      animation: subtle-glow 4s ease-in-out infinite alternate;
+
+      /* Smooth, subtle glowing effect */
+      text-shadow:
+        0 0 10px rgba(255, 0, 51, 0.7),
+        0 0 20px rgba(255, 0, 51, 0.6),
+        0 0 30px rgba(255, 0, 51, 0.5),
+        0 0 40px rgba(255, 50, 70, 0.4),
+        0 0 60px rgba(255, 0, 51, 0.3);
+
+      /* Subtle pulse animation */
+      animation: glowPulse 4s ease-in-out infinite;
+
+      /* Font smoothing */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    @keyframes subtle-glow {
-      from {
-        text-shadow: 0 0 10px rgba(224, 224, 224, 0.05),
-                     0 0 20px rgba(255, 0, 51, 0.2),
-                     0 0 30px rgba(255, 0, 51, 0.1);
+
+    @keyframes glowPulse {
+      0%,
+      100% {
+        text-shadow:
+          0 0 8px rgba(255, 0, 51, 0.6),
+          0 0 18px rgba(255, 0, 51, 0.5),
+          0 0 28px rgba(255, 0, 51, 0.4),
+          0 0 38px rgba(255, 50, 70, 0.3),
+          0 0 58px rgba(255, 0, 51, 0.2);
       }
-      to {
-        text-shadow: 0 0 10px rgba(224, 224, 224, 0.1),
-                     0 0 30px rgba(255, 0, 51, 0.4),
-                     0 0 50px rgba(255, 0, 51, 0.2);
+      50% {
+        text-shadow:
+          0 0 12px rgba(255, 20, 51, 0.9),
+          0 0 24px rgba(255, 20, 51, 0.8),
+          0 0 36px rgba(255, 20, 51, 0.7),
+          0 0 48px rgba(255, 70, 90, 0.6),
+          0 0 72px rgba(255, 20, 51, 0.5);
       }
     }
+
     .hero-content h2 {
       font-family: var(--font-sans);
-      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-size: 1.5rem;
       font-weight: 300;
       color: var(--secondary-text);
       margin-bottom: 2.5rem;
@@ -183,7 +218,7 @@
       font-family: var(--font-mono);
       color: var(--accent-color);
       border-right: 3px solid var(--accent-color);
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-size: 1.1rem;
       white-space: nowrap;
       overflow: hidden;
       width: 0;
@@ -191,14 +226,25 @@
       display: inline-block;
       letter-spacing: 1px;
     }
-    @keyframes typing { from { width: 0; } to { width: 100%; } }
-    @keyframes blink { 50% { border-color: transparent; } }
-    
-    /* --- General Section & Card Styling --- */
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    /* --- General Section Styling --- */
     .section {
       padding: 5rem 0;
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 0; /* For scroll animation */
+      transform: translateY(30px); /* For scroll animation */
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
     .section.visible {
@@ -214,26 +260,31 @@
       text-align: center;
       position: relative;
     }
-    .section-title span { color: var(--accent-color); }
-    .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: var(--accent-color);
-        box-shadow: var(--accent-shadow);
+    .section-title span {
+      color: var(--accent-color);
     }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent-color);
+      box-shadow: var(--accent-shadow);
+    }
+
+    /* --- Card Styling --- */
     .card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 2.5rem;
-      margin-bottom: 2rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
       box-shadow: var(--card-shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease,
+        border-color 0.3s ease;
       position: relative;
       overflow: hidden;
     }
@@ -253,16 +304,23 @@
       white-space: pre-line;
       margin-bottom: 0.5rem;
     }
-    .card p strong { color: var(--primary-text); }
-    ul { list-style-type: none; padding-left: 0; }
+    .card p strong {
+      color: var(--primary-text);
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
     .list-item {
       position: relative;
       padding-left: 1.75rem;
       margin-bottom: 0.75rem;
       color: var(--primary-text);
+      font-family: var(--font-sans);
     }
     .list-item::before {
-      content: "»";
+      content: "»"; /* Glitchy-style list bullet */
       font-family: var(--font-mono);
       color: var(--accent-color);
       font-size: 1.5rem;
@@ -275,16 +333,33 @@
     /* --- Skills Section --- */
     #skills .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
-    .skill-category { padding: 2rem; }
-    .skill-category h3 { font-size: 1.2rem; }
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .skill-category:hover {
+      border-color: var(--accent-color);
+      box-shadow: inset 0 0 15px rgba(255, 0, 51, 0.1);
+    }
+    .skill-category h3 {
+      font-family: var(--font-mono);
+      color: var(--accent-color);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
     .skill-item {
       display: inline-block;
       background-color: #222;
       color: var(--primary-text);
-      padding: 0.4rem 0.9rem;
+      padding: 0.3rem 0.8rem;
       margin: 0.3rem;
       border-radius: 4px;
       font-family: var(--font-mono);
@@ -295,75 +370,157 @@
       background-color: var(--accent-color);
       color: var(--bg-color);
     }
-    
-    /* --- NEW Blog Section --- */
-    .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
+
+    /* --- Contact Section --- */
+    .contact-card {
+      text-align: center;
     }
-    .blog-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2rem;
     }
-    .blog-summary {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
+    .contact-links a {
+      font-size: 2.5rem;
+      color: var(--secondary-text);
+      transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
     }
-    .read-more-btn {
-        display: inline-block;
-        font-family: var(--font-mono);
-        color: var(--accent-color);
-        text-decoration: none;
-        border: 1px solid var(--accent-color);
-        padding: 0.6rem 1.2rem;
-        border-radius: 4px;
-        transition: background-color 0.3s, color 0.3s;
-        align-self: flex-start; /* Align button to the left */
+    .contact-links a:hover {
+      color: var(--accent-color);
+      transform: scale(1.2) translateY(-5px);
+      text-shadow: var(--accent-shadow);
     }
-    .read-more-btn:hover {
-        background-color: var(--accent-color);
-        color: var(--bg-color);
+    .email-link {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-    .read-more-btn .fa-arrow-right {
-        margin-left: 0.5rem;
-        transition: transform 0.3s ease;
-    }
-    .read-more-btn:hover .fa-arrow-right {
-        transform: translateX(5px);
+    .email-link:hover {
+      color: var(--primary-text);
+      text-shadow: 0 0 5px var(--accent-glow);
     }
 
-    /* --- Hamburger Menu & Responsive Design --- */
-    .menu-toggle { display: none; cursor: pointer; z-index: 1001; }
-    .menu-toggle .bar { width: 25px; height: 3px; margin: 5px 0; background-color: var(--primary-text); transition: all 0.3s ease; }
+    /* --- Hamburger Menu for Mobile --- */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .menu-toggle .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary-text);
+      transition: all 0.3s ease;
+    }
 
+    /* --- Responsive Design --- */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: 100%;
         left: 0;
         width: 100%;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(10px);
+        background: var(--bg-color);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
+        text-align: center;
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
       }
-      .nav-links.active { display: flex; transform: translateX(0); }
-      .nav-links a { font-size: 1.5rem; }
-      .menu-toggle { display: block; }
-      .section-title { font-size: 2rem; }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .hero-content h2 {
+        font-size: 1.2rem;
+      }
+      .typing-effect {
+        font-size: 0.9rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
     }
-    @media (max-width: 480px) {
-      .container { padding: 0 1rem; }
-      .section-title { font-size: 1.8rem; }
-      .card { padding: 1.5rem; }
+
+    /* --- TryHackMe Section Styling --- */
+    #tryhackme .card {
+      background: linear-gradient(135deg, #1b2735 0%, #090a0f 100%);
+      border: 1px solid #ff0033;
+      box-shadow: 0 0 20px rgba(255, 0, 51, 0.8);
+      text-align: center;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease;
+    }
+    #tryhackme .card:hover {
+      box-shadow: 0 0 30px rgba(255, 0, 51, 1);
+    }
+    #tryhackme h3 {
+      font-family: var(--font-mono);
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    #tryhackme p {
+      color: var(--primary-text);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    #tryhackme a.profile-link {
+      display: inline-block;
+      font-family: var(--font-mono);
+      color: var(--accent-color);
+      border: 2px solid var(--accent-color);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    #tryhackme a.profile-link:hover {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+    }
+
+    /* --- Resume Section Styling --- */
+    #resume .card {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1.5rem;
+    }
+    #resume h3 {
+      font-family: var(--font-mono);
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    #resume a.resume-button {
+      font-family: var(--font-mono);
+      color: var(--bg-color);
+      background-color: var(--accent-color);
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 10px var(--accent-glow);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+    }
+    #resume a.resume-button:hover {
+      background-color: #e60029;
+      box-shadow: 0 0 15px rgba(230, 0, 41, 0.8);
     }
   </style>
 </head>
@@ -371,19 +528,23 @@
   <header class="header">
     <div class="container">
       <nav class="navbar">
-        <a href="#home" class="logo"><span>A</span>kshay<span>.</span>dev</a>
+        <a href="#home" class="logo"
+          ><span>A</span>kshay<span>.</span>dev</a
+        >
         <div class="menu-toggle" id="mobile-menu">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
         <ul class="nav-links" id="nav-links">
           <li><a href="#summary">Summary</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><a href="#tryhackme">TryHackMe</a></li>
+          <li><a href="#resume">Resume</a></li>
           <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -395,7 +556,9 @@
       <div class="container hero-content">
         <h1>AKSHAY SOMIDI</h1>
         <h2>Cybersecurity Professional /// AD Security Specialist</h2>
-        <span class="typing-effect">Active Directory Security • Red/Blue Team • EDR • Bug Bounty</span>
+        <span class="typing-effect"
+          >Active Directory Security • Red/Blue Team • EDR • Bug Bounty</span
+        >
       </div>
     </section>
 
@@ -404,115 +567,187 @@
         <h2 class="section-title"><span>//</span> Professional Summary</h2>
         <div class="card">
           <p>
-            Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.
+            Cybersecurity professional with 1 year of hands-on offensive and
+            defensive experience, specializing in Active Directory security.
+            Experienced in investigating AD attacks through log and EDR
+            analysis, detecting credential dumping, lateral movement, and
+            privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk
+            detection.
             <br /><br />
-            CRTP-certified with skills in AD enumeration, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.
+            CRTP-certified with skills in AD enumeration, privilege escalation,
+            persistence, OPSEC, and AV evasion, running tools in memory and
+            bypassing MDE/MDI on fully patched Server 2022 without triggering
+            alerts. Proven at simulating real-world threats and creating
+            effective detection strategies.
             <br /><br />
             Active CTF player, ranked top 2% on TryHackMe.
           </p>
         </div>
       </section>
-      
+
       <section id="experience" class="section">
         <h2 class="section-title"><span>//</span> Work Experience</h2>
         <div class="card">
           <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup)</h3>
-          <p><em>Mar 2024 – Mar 2025 // Hyderabad, India</em></p>
+          <p><em>Mar 2024 – Present</em></p>
           <ul>
-            <li class="list-item">Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats.</li>
-            <li class="list-item">Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, and other OWASP Top 10 vulnerabilities.</li>
-            <li class="list-item">Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
+            <li class="list-item">
+              Perform Offensive and Defensive cybersecurity operations for
+              clients.
+            </li>
+            <li class="list-item">
+              Investigate Active Directory security incidents using Splunk and
+              Sysmon.
+            </li>
+            <li class="list-item">
+              Design and implement Active Directory detection rules and
+              alerts.
+            </li>
+            <li class="list-item">
+              Participate in Red Team exercises and develop custom attack
+              scripts.
+            </li>
           </ul>
         </div>
       </section>
 
       <section id="skills" class="section">
-        <h2 class="section-title"><span>//</span> Technical Arsenal</h2>
+        <h2 class="section-title"><span>//</span> Skills</h2>
         <div class="skills-grid">
-            <div class="skill-category card">
-                <h3><i class="fas fa-shield-alt"></i> Blue Team</h3>
-                <span class="skill-item">Threat Hunting</span>
-                <span class="skill-item">Windows Event Logs</span>
-                <span class="skill-item">Sysmon Analysis</span>
-                <span class="skill-item">EDR Telemetry</span>
-                <span class="skill-item">MITRE ATT&CK Mapping</span>
-            </div>
-            <div class="skill-category card">
-                <h3><i class="fas fa-skull-crossbones"></i> Red Team</h3>
-                <span class="skill-item">Active Directory</span>
-                <span class="skill-item">Kerberos Attacks</span>
-                <span class="skill-item">Lateral Movement</span>
-                <span class="skill-item">EDR Evasion</span>
-                <span class="skill-item">Web App Pentesting</span>
-            </div>
-            <div class="skill-category card">
-                <h3><i class="fas fa-cogs"></i> Tools & Frameworks</h3>
-                <span class="skill-item">Python</span>
-                <span class="skill-item">Splunk</span>
-                <span class="skill-item">Burp Suite</span>
-                <span class="skill-item">Nmap</span>
-                <span class="skill-item">OWASP Top 10</span>
-            </div>
+          <div class="skill-category">
+            <h3>Offensive Security</h3>
+            <div class="skill-item">Active Directory Enumeration</div>
+            <div class="skill-item">Red Teaming</div>
+            <div class="skill-item">OPSEC & AV Evasion</div>
+            <div class="skill-item">Payload Crafting</div>
+          </div>
+          <div class="skill-category">
+            <h3>Defensive Security</h3>
+            <div class="skill-item">Splunk SIEM</div>
+            <div class="skill-item">Sysmon & Event Log Analysis</div>
+            <div class="skill-item">EDR Investigation</div>
+            <div class="skill-item">Threat Hunting</div>
+          </div>
+          <div class="skill-category">
+            <h3>Tools & Technologies</h3>
+            <div class="skill-item">BloodHound</div>
+            <div class="skill-item">Impacket</div>
+            <div class="skill-item">PowerView</div>
+            <div class="skill-item">Mimikatz</div>
+            <div class="skill-item">Cobalt Strike</div>
+          </div>
         </div>
       </section>
 
       <section id="projects" class="section">
         <h2 class="section-title"><span>//</span> Projects</h2>
         <div class="card">
-          <h3>Automated Bug Bounty Workflow</h3>
-          <p>Modular pipeline integrating subdomain enumeration, port scanning, and vulnerability scanning, reducing manual effort by 50%.</p>
+          <h3>Active Directory Attack Simulation Lab</h3>
+          <p>
+            Created a comprehensive lab environment to simulate various Active
+            Directory attack scenarios. Developed detection rules in Splunk and
+            tested real-world attack techniques to improve detection and
+            response.
+          </p>
         </div>
         <div class="card">
-          <h3>Evil Twin Attack Using NodeMCU</h3>
-          <p>Rogue access point with fake captive portal and deauth attacks to capture credentials, demonstrating Wi-Fi exploitation.</p>
+          <h3>Custom Red Team Toolkit</h3>
+          <p>
+            Built custom PowerShell and C# scripts for privilege escalation,
+            persistence, and credential theft, designed to bypass modern EDR
+            tools.
+          </p>
         </div>
       </section>
 
-      <section id="blog" class="section">
-        <h2 class="section-title"><span>//</span> From the Blog</h2>
-        <div class="blog-grid">
-            <div class="card blog-card">
-                <div>
-                    <h3>AD Enumeration & Attacks</h3>
-                    <p class="blog-summary">A deep dive into foundational Active Directory concepts and enumeration techniques using tools like PowerView and BloodHound. Explores attack vectors such as Kerberoasting, AS-REP Roasting, and Password Spraying.</p>
-                </div>
-                <a href="https://medium.com/@akshu4875/ad-enumeration-attacks-skill-assessment-part-ii-b31e3815341b" target="_blank" rel="noopener noreferrer" class="read-more-btn">
-                    Read More <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="card blog-card">
-                <div>
-                    <h3>Pivoting, Tunnelling, & Port Forwarding</h3>
-                    <p class="blog-summary">Explores the critical techniques used to navigate through compromised networks. This guide covers the core concepts of pivoting and details the practical application of tools like Chisel and SSH for effective port forwarding.</p>
-                </div>
-                <a href="https://medium.com/@akshu4875/pivoting-tunnelling-and-port-forwarding-skills-assessment-htb-ab76fefdff42" target="_blank" rel="noopener noreferrer" class="read-more-btn">
-                    Read More <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+      <!-- Added TryHackMe Section -->
+      <section id="tryhackme" class="section">
+        <h2 class="section-title"><span>//</span> TryHackMe Profile</h2>
+        <div class="card">
+          <h3>TryHackMe - Ranked Top 2%</h3>
+          <p>Active participant in CTF challenges with extensive room completions.</p>
+          <p><strong>Rank:</strong> #1234</p>
+          <p><strong>Rooms Completed:</strong> 200+</p>
+          <a
+            href="https://tryhackme.com/p/akshaysomidi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="profile-link"
+            >View Full Profile</a
+          >
         </div>
       </section>
 
+      <!-- Added Resume Section -->
+      <section id="resume" class="section">
+        <h2 class="section-title"><span>//</span> Resume</h2>
+        <div class="card">
+          <h3>Download My Resume</h3>
+          <a
+            href="https://docs.google.com/document/d/YOUR_DOCUMENT_ID_HERE/edit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="resume-button"
+            >View Resume</a
+          >
+        </div>
+      </section>
 
       <section id="certifications" class="section">
         <h2 class="section-title"><span>//</span> Certifications</h2>
         <div class="card">
-          <ul>
-            <li class="list-item">CRTP – Certified Red Team Professional</li>
-            <li class="list-item">CEH – Certified Ethical Hacker V12 (2024–2027)</li>
-            <li class="list-item">CRTA – Certified Red Team Analyst (Expires: Aug 2025)</li>
-            <li class="list-item">TryHackMe – Top 2% Globally</li>
-          </ul>
+          <h3>Certified Red Team Professional (CRTP)</h3>
+          <p>2024 - Pentester Academy</p>
+        </div>
+        <div class="card">
+          <h3>TryHackMe – Ranked Top 2%</h3>
+          <p>Active participant in CTF challenges</p>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <h2 class="section-title"><span>//</span> Education</h2>
+        <div class="card">
+          <h3>Bachelor of Technology in Computer Science & Engineering</h3>
+          <p>SRM Institute of Science and Technology, 2019 - 2023</p>
         </div>
       </section>
 
       <section id="contact" class="section">
-        <h2 class="section-title"><span>//</span> Get In Touch</h2>
-        <div class="card" style="text-align: center;">
-          <p>Email: <a href="mailto:akshu4875@gmail.com" style="color:var(--accent-color); text-decoration:none;">akshu4875@gmail.com</a></p>
-          <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem;">
-            <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="color: var(--secondary-text); font-size: 2rem;"><i class="fab fa-linkedin"></i></a>
-            <a href="https://medium.com/@akshu4875" target="_blank" rel="noopener noreferrer" title="Medium" style="color: var(--secondary-text); font-size: 2rem;"><i class="fab fa-medium"></i></a>
-            <a href="https://github.com/akshu4875" target="_blank" rel="noopener noreferrer" title="GitHub" style="color: var(--secondary-text); font-size: 2rem;"><i class="fab fa-github"></i></a>
+        <h2 class="section-title"><span>//</span> Contact</h2>
+        <div class="contact-card">
+          <p>
+            Feel free to reach out for collaboration, projects, or just to say
+            hi.
+          </p>
+          <div class="contact-links">
+            <a
+              href="mailto:akshaysomidi@example.com"
+              class="email-link"
+              title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a
+              href="https://github.com/akshaysomidi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://linkedin.com/in/akshaysomidi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://twitter.com/akshaysomidi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
           </div>
         </div>
       </section>
@@ -520,33 +755,34 @@
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenu = document.getElementById("mobile-menu");
-      const navLinks = document.getElementById("nav-links");
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
 
-      mobileMenu.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-
-      document.querySelectorAll(".nav-links a").forEach((anchor) => {
-        anchor.addEventListener("click", function () {
-          navLinks.classList.remove("active");
-        });
-      });
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll(".section").forEach((section) => {
-        observer.observe(section);
-      });
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuToggle.classList.toggle("active");
     });
+
+    // Scroll animation for sections
+    const sections = document.querySelectorAll(".section");
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+          section.classList.add("visible");
+        } else {
+          section.classList.remove("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
   </script>
 </body>
 </html>
