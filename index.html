@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
   <title>Akshay Somidi | Cybersecurity Portfolio</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
   <style>
     /* --- Theme Variables --- */
     :root {
@@ -19,14 +26,14 @@
       --secondary-text: #a0a0a0;
       --accent-color: #ff0033; /* A vibrant, "hacker" red */
       --accent-glow: rgba(255, 0, 51, 0.5);
-      --card-bg: rgba(17, 17, 17, 0.9);
+      --card-bg: #111111;
       --border-color: #2a2a2a;
       --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       --accent-shadow: 0 0 15px var(--accent-glow);
-      
-      --font-display: 'Orbitron', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-sans: 'Roboto', sans-serif;
+
+      --font-display: "Orbitron", sans-serif; /* For big, impactful headings */
+      --font-mono: "JetBrains Mono", monospace; /* For a modern, clean code feel */
+      --font-sans: "Roboto", sans-serif; /* For readable body text */
     }
 
     * {
@@ -45,9 +52,11 @@
       font-family: var(--font-sans);
       line-height: 1.7;
       overflow-x: hidden;
-      
-      /* --- NEW Mysterious Background Theme --- */
-      background-image: url('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2274&auto=format&fit=crop');
+
+      /* --- Anime Hacker Background Theme --- */
+      background-image: url(
+        "https://images.unsplash.com/photo-1581333100695-5443bab6f2b9?q=80&w=2070&auto=format&fit=crop"
+      );
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
@@ -56,13 +65,17 @@
 
     /* --- Dark Overlay for Readability --- */
     body::before {
-      content: '';
-      position: fixed;
+      content: "";
+      position: fixed; /* Fixed position to cover viewport */
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.92) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.85) 100%
+      );
       z-index: -1;
     }
 
@@ -98,7 +111,9 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
       text-shadow: 0 0 5px var(--accent-glow);
     }
-    .logo span { color: var(--accent-color); }
+    .logo span {
+      color: var(--accent-color);
+    }
     .logo:hover {
       color: var(--accent-color);
       text-shadow: 0 0 15px var(--accent-glow);
@@ -119,9 +134,11 @@
       transition: color 0.3s ease;
       padding: 5px 0;
     }
-    .nav-links a:hover { color: var(--accent-color); }
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
     .nav-links a::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       height: 2px;
@@ -144,36 +161,55 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 4rem 0;
     }
 
     .hero-content h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive font size */
+      font-size: 4rem;
       font-weight: 900;
       color: var(--primary-text);
       margin-bottom: 1rem;
-      letter-spacing: 2px;
-      /* NEW Subtle Glow Animation */
-      animation: subtle-glow 4s ease-in-out infinite alternate;
+
+      /* Smooth, subtle glowing effect */
+      text-shadow:
+        0 0 10px rgba(255, 0, 51, 0.7),
+        0 0 20px rgba(255, 0, 51, 0.6),
+        0 0 30px rgba(255, 0, 51, 0.5),
+        0 0 40px rgba(255, 50, 70, 0.4),
+        0 0 60px rgba(255, 0, 51, 0.3);
+
+      /* Subtle pulse animation */
+      animation: glowPulse 4s ease-in-out infinite;
+
+      /* Font smoothing */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    /* NEW Keyframes for a subtle, mysterious glow */
-    @keyframes subtle-glow {
-      from {
-        text-shadow: 0 0 10px rgba(224, 224, 224, 0.05),
-                     0 0 20px rgba(255, 0, 51, 0.2),
-                     0 0 30px rgba(255, 0, 51, 0.1);
+
+    @keyframes glowPulse {
+      0%,
+      100% {
+        text-shadow:
+          0 0 8px rgba(255, 0, 51, 0.6),
+          0 0 18px rgba(255, 0, 51, 0.5),
+          0 0 28px rgba(255, 0, 51, 0.4),
+          0 0 38px rgba(255, 50, 70, 0.3),
+          0 0 58px rgba(255, 0, 51, 0.2);
       }
-      to {
-        text-shadow: 0 0 10px rgba(224, 224, 224, 0.1),
-                     0 0 30px rgba(255, 0, 51, 0.4),
-                     0 0 50px rgba(255, 0, 51, 0.2);
+      50% {
+        text-shadow:
+          0 0 12px rgba(255, 20, 51, 0.9),
+          0 0 24px rgba(255, 20, 51, 0.8),
+          0 0 36px rgba(255, 20, 51, 0.7),
+          0 0 48px rgba(255, 70, 90, 0.6),
+          0 0 72px rgba(255, 20, 51, 0.5);
       }
     }
-    
+
     .hero-content h2 {
       font-family: var(--font-sans);
-      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-size: 1.5rem;
       font-weight: 300;
       color: var(--secondary-text);
       margin-bottom: 2.5rem;
@@ -182,7 +218,7 @@
       font-family: var(--font-mono);
       color: var(--accent-color);
       border-right: 3px solid var(--accent-color);
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-size: 1.1rem;
       white-space: nowrap;
       overflow: hidden;
       width: 0;
@@ -190,14 +226,25 @@
       display: inline-block;
       letter-spacing: 1px;
     }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink { 50% { border-color: transparent } }
-    
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
     /* --- General Section Styling --- */
     .section {
       padding: 5rem 0;
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 0; /* For scroll animation */
+      transform: translateY(30px); /* For scroll animation */
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
     .section.visible {
@@ -213,19 +260,21 @@
       text-align: center;
       position: relative;
     }
-    .section-title span { color: var(--accent-color); }
-    .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: var(--accent-color);
-        box-shadow: var(--accent-shadow);
+    .section-title span {
+      color: var(--accent-color);
     }
-    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent-color);
+      box-shadow: var(--accent-shadow);
+    }
+
     /* --- Card Styling --- */
     .card {
       background-color: var(--card-bg);
@@ -234,7 +283,8 @@
       padding: 2rem;
       margin-bottom: 1.5rem;
       box-shadow: var(--card-shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease,
+        border-color 0.3s ease;
       position: relative;
       overflow: hidden;
     }
@@ -254,9 +304,14 @@
       white-space: pre-line;
       margin-bottom: 0.5rem;
     }
-    .card p strong { color: var(--primary-text); }
-    
-    ul { list-style-type: none; padding-left: 0; }
+    .card p strong {
+      color: var(--primary-text);
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
     .list-item {
       position: relative;
       padding-left: 1.75rem;
@@ -265,7 +320,7 @@
       font-family: var(--font-sans);
     }
     .list-item::before {
-      content: '»';
+      content: "»"; /* Glitchy-style list bullet */
       font-family: var(--font-mono);
       color: var(--accent-color);
       font-size: 1.5rem;
@@ -278,8 +333,8 @@
     /* --- Skills Section --- */
     #skills .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for better fit */
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
     .skill-category {
       background: var(--card-bg);
@@ -305,7 +360,7 @@
       background-color: #222;
       color: var(--primary-text);
       padding: 0.3rem 0.8rem;
-      margin: 0.2rem;
+      margin: 0.3rem;
       border-radius: 4px;
       font-family: var(--font-mono);
       font-size: 0.9rem;
@@ -317,7 +372,9 @@
     }
 
     /* --- Contact Section --- */
-    .contact-card { text-align: center; }
+    .contact-card {
+      text-align: center;
+    }
     .contact-links {
       display: flex;
       justify-content: center;
@@ -335,13 +392,13 @@
       text-shadow: var(--accent-shadow);
     }
     .email-link {
-        color: var(--accent-color);
-        text-decoration: none;
-        transition: color 0.3s ease, text-shadow 0.3s ease;
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     .email-link:hover {
-        color: var(--primary-text);
-        text-shadow: 0 0 5px var(--accent-glow);
+      color: var(--primary-text);
+      text-shadow: 0 0 5px var(--accent-glow);
     }
 
     /* --- Hamburger Menu for Mobile --- */
@@ -350,7 +407,6 @@
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
-      z-index: 1001; /* Ensure it's above other elements */
     }
     .menu-toggle .bar {
       width: 25px;
@@ -363,47 +419,48 @@
     @media (max-width: 768px) {
       .nav-links {
         display: none;
-        position: fixed; /* Use fixed for full-screen overlay */
-        top: 0;
+        position: absolute;
+        top: 100%;
         left: 0;
         width: 100%;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
+        background: var(--bg-color);
         flex-direction: column;
-        justify-content: center; /* Center links vertically */
-        align-items: center;
-        gap: 2.5rem;
         text-align: center;
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
       }
       .nav-links.active {
         display: flex;
-        transform: translateX(0);
       }
-      .nav-links a { font-size: 1.5rem; }
-      .menu-toggle { display: flex; }
-      .section-title { font-size: 2rem; }
-    }
-    
-    @media (max-width: 480px) {
-      .container { padding: 0 1rem; }
-      .section-title { font-size: 1.8rem; }
-      .card { padding: 1.5rem; }
+      .menu-toggle {
+        display: flex;
+      }
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .hero-content h2 {
+        font-size: 1.2rem;
+      }
+      .typing-effect {
+        font-size: 0.9rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <header class="header">
     <div class="container">
       <nav class="navbar">
-        <a href="#home" class="logo"><span>A</span>kshay<span>.</span>dev</a>
+        <a href="#home" class="logo"
+          ><span>A</span>kshay<span>.</span>dev</a
+        >
         <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
         <ul class="nav-links" id="nav-links">
           <li><a href="#summary">Summary</a></li>
@@ -423,7 +480,9 @@
       <div class="container hero-content">
         <h1>AKSHAY SOMIDI</h1>
         <h2>Cybersecurity Professional /// AD Security Specialist</h2>
-        <span class="typing-effect">Active Directory Security • Red/Blue Team • EDR • Bug Bounty</span>
+        <span class="typing-effect"
+          >Active Directory Security • Red/Blue Team • EDR • Bug Bounty</span
+        >
       </div>
     </section>
 
@@ -431,13 +490,22 @@
       <section id="summary" class="section">
         <h2 class="section-title"><span>//</span> Professional Summary</h2>
         <div class="card">
-        <p>
-          Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.
-          <br><br>
-          CRTP-certified with skills in AD enumeration, privilege escalation, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.
-          <br><br>
-          Active CTF player, ranked top 2% on TryHackMe.
-        </p>
+          <p>
+            Cybersecurity professional with 1 year of hands-on offensive and
+            defensive experience, specializing in Active Directory security.
+            Experienced in investigating AD attacks through log and EDR
+            analysis, detecting credential dumping, lateral movement, and
+            privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk
+            detection.
+            <br /><br />
+            CRTP-certified with skills in AD enumeration, privilege escalation,
+            persistence, OPSEC, and AV evasion, running tools in memory and
+            bypassing MDE/MDI on fully patched Server 2022 without triggering
+            alerts. Proven at simulating real-world threats and creating
+            effective detection strategies.
+            <br /><br />
+            Active CTF player, ranked top 2% on TryHackMe.
+          </p>
         </div>
       </section>
 
@@ -445,129 +513,132 @@
         <h2 class="section-title"><span>//</span> Work Experience</h2>
         <div class="card">
           <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup)</h3>
-          <p><em>Mar 2024 – Mar 2025 // Hyderabad, India</em></p>
+          <p><em>Mar 2024 – Present</em></p>
           <ul>
-            <li class="list-item">Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats such as credential dumping and lateral movement.</li>
-            <li class="list-item">Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, broken authentication with detailed reports.</li>
-            <li class="list-item">Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Cybersecurity Analyst (Internship) – TriArmour AI Private Limited</h3>
-          <p><em>Aug 2023 – Feb 2024</em></p>
-          <ul>
-            <li class="list-item">Streamlined phishing investigations by analyzing email headers and malicious URLs, reducing false positives by 30%.</li>
-            <li class="list-item">Implemented SPF, DKIM, and DMARC to strengthen email security.</li>
-            <li class="list-item">Contributed to Splunk SIEM project testing detection rules for brute-force and phishing attacks.</li>
-          </ul>
-        </div>
-         <div class="card">
-          <h3>Cybersecurity Intern – C-DAC Hyderabad, India</h3>
-          <p><em>Aug 2023 – Sep 2023</em></p>
-          <ul>
-            <li class="list-item">Researched vulnerabilities like Log4Shell and MOVEit, providing mitigation recommendations.</li>
-            <li class="list-item">Assisted in evidence collection and forensic workflow improvements.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Bug Bounty Researcher (Freelance)</h3>
-          <ul>
-            <li class="list-item">Discovered URI manipulation in Steam’s rungameid scheme and suggested mitigations.</li>
-            <li class="list-item">Reported an IDOR vulnerability in Telangana Govt portal exposing medical data.</li>
-            <li class="list-item">Found reflected XSS and drive-by download chains in corporate environment.</li>
+            <li class="list-item">
+              Perform Offensive and Defensive cybersecurity operations for
+              clients.
+            </li>
+            <li class="list-item">
+              Investigate Active Directory security incidents using Splunk and
+              Sysmon.
+            </li>
+            <li class="list-item">
+              Design and implement Active Directory detection rules and
+              alerts.
+            </li>
+            <li class="list-item">
+              Participate in Red Team exercises and develop custom attack
+              scripts.
+            </li>
           </ul>
         </div>
       </section>
 
       <section id="skills" class="section">
-        <h2 class="section-title"><span>//</span> Technical Arsenal</h2>
+        <h2 class="section-title"><span>//</span> Skills</h2>
         <div class="skills-grid">
-            <div class="skill-category">
-                <h3><i class="fas fa-shield-alt"></i> Blue Team</h3>
-                <span class="skill-item">Threat Hunting</span>
-                <span class="skill-item">Windows Event Logs</span>
-                <span class="skill-item">Sysmon Analysis</span>
-                <span class="skill-item">EDR Telemetry</span>
-                <span class="skill-item">Bitdefender</span>
-                <span class="skill-item">Sophos MDR</span>
-                <span class="skill-item">Network Traffic Analysis</span>
-                <span class="skill-item">Firewall/IDS Alerts</span>
-                <span class="skill-item">MITRE ATT&CK Mapping</span>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-skull-crossbones"></i> Red Team</h3>
-                <span class="skill-item">Active Directory</span>
-                <span class="skill-item">Kerberos Attacks</span>
-                <span class="skill-item">ACL Abuse</span>
-                <span class="skill-item">Lateral Movement</span>
-                <span class="skill-item">Domain Persistence</span>
-                <span class="skill-item">EDR Evasion</span>
-                <span class="skill-item">Web App Pentesting</span>
-                <span class="skill-item">LPE (Win/Linux)</span>
-                <span class="skill-item">PowerShell</span>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-cogs"></i> Tools & Frameworks</h3>
-                <span class="skill-item">Python</span>
-                <span class="skill-item">Splunk</span>
-                <span class="skill-item">Burp Suite</span>
-                <span class="skill-item">Nmap</span>
-                <span class="skill-item">Metasploit</span>
-                <span class="skill-item">OWASP Top 10</span>
-                <span class="skill-item">Cyber Kill Chain</span>
-                <span class="skill-item">Diamond Model</span>
-                <span class="skill-item">Wireshark</span>
-            </div>
+          <div class="skill-category">
+            <h3>Offensive Security</h3>
+            <div class="skill-item">Active Directory Enumeration</div>
+            <div class="skill-item">Red Teaming</div>
+            <div class="skill-item">OPSEC & AV Evasion</div>
+            <div class="skill-item">Payload Crafting</div>
+          </div>
+          <div class="skill-category">
+            <h3>Defensive Security</h3>
+            <div class="skill-item">Splunk SIEM</div>
+            <div class="skill-item">Sysmon & Event Log Analysis</div>
+            <div class="skill-item">EDR Investigation</div>
+            <div class="skill-item">Threat Hunting</div>
+          </div>
+          <div class="skill-category">
+            <h3>Tools & Technologies</h3>
+            <div class="skill-item">BloodHound</div>
+            <div class="skill-item">Impacket</div>
+            <div class="skill-item">PowerView</div>
+            <div class="skill-item">Mimikatz</div>
+            <div class="skill-item">Cobalt Strike</div>
+          </div>
         </div>
       </section>
 
       <section id="projects" class="section">
         <h2 class="section-title"><span>//</span> Projects</h2>
         <div class="card">
-          <h3>Automated Bug Bounty Workflow with Raspberry Pi</h3>
-          <p>Modular pipeline integrating subdomain enumeration, port scanning, parameter discovery, and vulnerability scanning, reducing manual effort by 50% and auto-generating HTML/PDF reports.</p>
+          <h3>Active Directory Attack Simulation Lab</h3>
+          <p>
+            Created a comprehensive lab environment to simulate various Active
+            Directory attack scenarios. Developed detection rules in Splunk and
+            tested real-world attack techniques to improve detection and
+            response.
+          </p>
         </div>
         <div class="card">
-          <h3>Evil Twin Attack Using NodeMCU</h3>
-          <p>Rogue access point with fake captive portal and deauthentication attacks to capture credentials, demonstrating Wi-Fi exploitation and social engineering.</p>
-        </div>
-        <div class="card">
-          <h3>Rubber Ducky Attack with Raspberry Pi Pico</h3>
-          <p>HID-based keystroke injection extracting Wi-Fi credentials and exfiltrating via webhook, showing risks of physical access and HID spoofing.</p>
+          <h3>Custom Red Team Toolkit</h3>
+          <p>
+            Built custom PowerShell and C# scripts for privilege escalation,
+            persistence, and credential theft, designed to bypass modern EDR
+            tools.
+          </p>
         </div>
       </section>
 
       <section id="certifications" class="section">
         <h2 class="section-title"><span>//</span> Certifications</h2>
         <div class="card">
-          <ul>
-            <li class="list-item">CRTP – Certified Red Team Professional</li>
-            <li class="list-item">CEH – Certified Ethical Hacker V12 (2024–2027)</li>
-            <li class="list-item">CRTA – Certified Red Team Analyst (Expires: 7/23/2025)</li>
-            <li class="list-item">CC – Certified in Cybersecurity - ISC²</li>
-            <li class="list-item">CAP - Certified AppSec Practitioner</li>
-            <li class="list-item">TryHackMe – Top 2% Globally | Jr. Pentester Path</li>
-          </ul>
+          <h3>Certified Red Team Professional (CRTP)</h3>
+          <p>2024 - Pentester Academy</p>
+        </div>
+        <div class="card">
+          <h3>TryHackMe – Ranked Top 2%</h3>
+          <p>Active participant in CTF challenges</p>
         </div>
       </section>
 
       <section id="education" class="section">
         <h2 class="section-title"><span>//</span> Education</h2>
         <div class="card">
-          <p><strong>Sri Indu College of Engineering and Technology, Hyderabad, India</strong><br>Bachelor of Technology in Cyber Security (Nov 2021 – May 2025)</p>
-          <hr style="border-color: var(--border-color); margin: 1rem 0;">
-          <p><strong>Sri Chaitanya Junior College, Hyderabad, India</strong><br>Intermediate Public Education (2019 – 2021)</p>
+          <h3>Bachelor of Technology in Computer Science & Engineering</h3>
+          <p>SRM Institute of Science and Technology, 2019 - 2023</p>
         </div>
       </section>
 
       <section id="contact" class="section">
-        <h2 class="section-title"><span>//</span> Get In Touch</h2>
-        <div class="card contact-card">
-          <p>Email: <a href="mailto:akshu4875@gmail.com" class="email-link">akshu4875@gmail.com</a></p>
-          <div class="contact-links" aria-label="social media links">
-            <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://medium.com/@akshu4875" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
-            <a href="https://github.com/Knowntonone" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <h2 class="section-title"><span>//</span> Contact</h2>
+        <div class="contact-card">
+          <p>
+            Feel free to reach out for collaboration, projects, or just to say
+            hi.
+          </p>
+          <div class="contact-links">
+            <a
+              href="mailto:akshaysomidi@example.com"
+              class="email-link"
+              title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a
+              href="https://github.com/akshaysomidi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://linkedin.com/in/akshaysomidi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://twitter.com/akshaysomidi"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
           </div>
         </div>
       </section>
@@ -575,48 +646,34 @@
   </main>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // --- Mobile Menu Toggle ---
-      const mobileMenu = document.getElementById('mobile-menu');
-      const navLinks = document.getElementById('nav-links');
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
 
-      mobileMenu.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent click from bubbling up
-        navLinks.classList.toggle('active');
-      });
-
-      // --- Smooth scrolling & close menu on link click ---
-      document.querySelectorAll('.nav-links a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          navLinks.classList.remove('active'); // Close menu
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80, // Offset for fixed header
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-
-      // --- Animate sections on scroll ---
-      const sections = document.querySelectorAll('.section');
-      const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  entry.target.classList.add('visible');
-                  observer.unobserve(entry.target);
-              }
-          });
-      }, { threshold: 0.1 });
-
-      sections.forEach(section => {
-          observer.observe(section);
-      });
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuToggle.classList.toggle("active");
     });
-  </script>
 
+    // Scroll animation for sections
+    const sections = document.querySelectorAll(".section");
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+          section.classList.add("visible");
+        } else {
+          section.classList.remove("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
 </body>
 </html>
