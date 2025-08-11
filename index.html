@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap"
     rel="stylesheet"
   />
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -23,12 +24,14 @@
       --bg-color: #0a0a0a;
       --primary-text: #e0e0e0;
       --secondary-text: #a0a0a0;
-      --accent-color: #ff0033; /* A vibrant, "hacker" red */
-      --accent-glow: rgba(255, 0, 51, 0.5);
+      /* REFINED, more subtle and cinematic red */
+      --accent-color: #E50914; 
+      --accent-glow: rgba(229, 9, 20, 0.5);
       --card-bg: rgba(17, 17, 17, 0.9);
       --border-color: #2a2a2a;
       --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       --accent-shadow: 0 0 15px var(--accent-glow);
+      
       --font-display: "Orbitron", sans-serif;
       --font-mono: "JetBrains Mono", monospace;
       --font-sans: "Roboto", sans-serif;
@@ -48,12 +51,12 @@
       background: var(--bg-color);
       color: var(--primary-text);
       font-family: var(--font-sans);
-      line-height: 1.7;
+      line-height: 1.8; /* Increased for better readability */
       overflow-x: hidden;
-      background-image: url("https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2274&auto=format&fit=crop");
-      background-size: cover;
+      /* NEW CSS-only background for mystery and performance */
+      background: radial-gradient(ellipse at center, rgba(20, 20, 20, 0.5) 0%, #0a0a0a 70%),
+                  repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 4px);
       background-attachment: fixed;
-      background-position: center;
       position: relative;
     }
 
@@ -112,7 +115,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem; /* Adjusted gap */
       list-style: none;
     }
     .nav-links a {
@@ -123,6 +126,7 @@
       position: relative;
       transition: color 0.3s ease;
       padding: 5px 0;
+      font-size: 0.95rem;
     }
     .nav-links a:hover { color: var(--accent-color); }
     .nav-links a::after {
@@ -155,23 +159,28 @@
       font-family: var(--font-display);
       font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 900;
-      color: var(--primary-text);
+      color: #f5f5f5; /* Slightly off-white for better glow effect */
       margin-bottom: 1rem;
       letter-spacing: 2px;
-      animation: subtle-glow 4s ease-in-out infinite alternate;
+      /* REFINED Subtle Glow Animation */
+      animation: subtle-glow 5s ease-in-out infinite alternate;
     }
+    /* REFINED Keyframes for a less odd, more mysterious glow */
     @keyframes subtle-glow {
       from {
-        text-shadow: 0 0 10px rgba(224, 224, 224, 0.05),
-                     0 0 20px rgba(255, 0, 51, 0.2),
-                     0 0 30px rgba(255, 0, 51, 0.1);
+        text-shadow: 0 0 10px rgba(229, 9, 20, 0.2),
+                     0 0 20px rgba(229, 9, 20, 0.2),
+                     0 0 35px rgba(229, 9, 20, 0.2),
+                     0 0 50px rgba(229, 9, 20, 0.2);
       }
       to {
-        text-shadow: 0 0 10px rgba(224, 224, 224, 0.1),
-                     0 0 30px rgba(255, 0, 51, 0.4),
-                     0 0 50px rgba(255, 0, 51, 0.2);
+        text-shadow: 0 0 5px rgba(229, 9, 20, 0.4),
+                     0 0 15px rgba(229, 9, 20, 0.4),
+                     0 0 25px rgba(229, 9, 20, 0.4),
+                     0 0 35px rgba(229, 9, 20, 0.4);
       }
     }
+    
     .hero-content h2 {
       font-family: var(--font-sans);
       font-size: clamp(1.1rem, 4vw, 1.5rem);
@@ -196,7 +205,7 @@
     
     /* --- General Section & Card Styling --- */
     .section {
-      padding: 5rem 0;
+      padding: 6rem 0; /* Increased padding */
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -210,7 +219,7 @@
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--primary-text);
-      margin-bottom: 3rem;
+      margin-bottom: 4rem; /* Increased margin */
       text-align: center;
       position: relative;
     }
@@ -250,7 +259,6 @@
     }
     .card p {
       color: var(--secondary-text);
-      white-space: pre-line;
       margin-bottom: 0.5rem;
     }
     .card p strong { color: var(--primary-text); }
@@ -296,7 +304,7 @@
       color: var(--bg-color);
     }
     
-    /* --- NEW Blog Section --- */
+    /* --- Blog Section --- */
     .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -320,23 +328,131 @@
         padding: 0.6rem 1.2rem;
         border-radius: 4px;
         transition: background-color 0.3s, color 0.3s;
-        align-self: flex-start; /* Align button to the left */
+        align-self: flex-start;
     }
     .read-more-btn:hover {
         background-color: var(--accent-color);
         color: var(--bg-color);
     }
-    .read-more-btn .fa-arrow-right {
+    .read-more-btn .fa-arrow-right, .read-more-btn .fa-external-link-alt {
         margin-left: 0.5rem;
         transition: transform 0.3s ease;
     }
-    .read-more-btn:hover .fa-arrow-right {
+    .read-more-btn:hover .fa-arrow-right, .read-more-btn:hover .fa-external-link-alt {
         transform: translateX(5px);
     }
 
+    /* --- TryHackMe Section --- */
+    .tryhackme-section {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 3rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tryhackme-section:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 20px rgba(229, 9, 20, 0.2);
+    }
+    /* NEW CSS-only graphic */
+    .tryhackme-graphic {
+        flex: 1;
+        max-width: 300px;
+        min-height: 220px;
+        background: linear-gradient(145deg, #111, #222);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+    }
+    .tryhackme-graphic::before, .tryhackme-graphic::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent-color);
+        animation: scanline 8s linear infinite;
+        box-shadow: 0 0 5px var(--accent-glow);
+    }
+    .tryhackme-graphic::after {
+        animation-delay: 4s;
+    }
+    @keyframes scanline {
+        0% { top: -10%; opacity: 0; }
+        10% { opacity: 0.7; }
+        90% { opacity: 0.7; }
+        100% { top: 110%; opacity: 0; }
+    }
+    .tryhackme-content {
+        flex: 2;
+    }
+    .tryhackme-content h3 {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        color: var(--primary-text);
+        margin-bottom: 1rem;
+    }
+    .tryhackme-content h3 span { color: var(--accent-color); }
+    .tryhackme-stats {
+        display: flex;
+        gap: 2rem;
+        margin: 1.5rem 0;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+        font-family: var(--font-mono);
+        font-size: 1.8rem;
+        color: var(--accent-color);
+        font-weight: 700;
+    }
+    .stat-label {
+        font-family: var(--font-sans);
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+    }
+    
+    /* --- Resume Section --- */
+    .resume-card {
+        text-align: center;
+        padding: 3rem;
+    }
+    .resume-btn {
+        display: inline-block;
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        color: var(--primary-text);
+        background-color: var(--accent-color);
+        text-decoration: none;
+        padding: 1rem 2.5rem;
+        border-radius: 5px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .resume-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .resume-btn .fa-download {
+        margin-left: 0.75rem;
+    }
+
     /* --- Hamburger Menu & Responsive Design --- */
-    .menu-toggle { display: none; cursor: pointer; z-index: 1001; }
-    .menu-toggle .bar { width: 25px; height: 3px; margin: 5px 0; background-color: var(--primary-text); transition: all 0.3s ease; }
+    .menu-toggle { display: none; cursor: pointer; z-index: 1001; background: none; border: none; padding: 0.5rem;}
+    .menu-toggle .bar { width: 25px; height: 3px; margin: 5px 0; background-color: var(--primary-text); transition: all 0.3s ease-in-out; }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+
+    @media (max-width: 820px) {
+      .nav-links {
+        gap: 1rem;
+      }
+    }
 
     @media (max-width: 768px) {
       .nav-links {
@@ -359,11 +475,14 @@
       .nav-links a { font-size: 1.5rem; }
       .menu-toggle { display: block; }
       .section-title { font-size: 2rem; }
+      .tryhackme-section { flex-direction: column; padding: 2rem; }
+      .tryhackme-content { text-align: center; }
+      .tryhackme-stats { justify-content: center; }
     }
     @media (max-width: 480px) {
-      .container { padding: 0 1rem; }
+      .container { padding: 0 1.5rem; }
       .section-title { font-size: 1.8rem; }
-      .card { padding: 1.5rem; }
+      .card { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -372,18 +491,20 @@
     <div class="container">
       <nav class="navbar">
         <a href="#home" class="logo"><span>A</span>kshay<span>.</span>dev</a>
-        <div class="menu-toggle" id="mobile-menu">
+        <button class="menu-toggle" id="mobile-menu" aria-label="Open navigation menu">
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
-        </div>
+        </button>
         <ul class="nav-links" id="nav-links">
           <li><a href="#summary">Summary</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#tryhackme">TryHackMe</a></li>
           <li><a href="#blog">Blog</a></li>
-          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#certifications">Certs</a></li>
+          <li><a href="#resume">Resume</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -406,9 +527,7 @@
           <p>
             Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.
             <br /><br />
-            CRTP-certified with skills in AD enumeration, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.
-            <br /><br />
-            Active CTF player, ranked top 2% on TryHackMe.
+            CRTP-certified with skills in AD enumeration, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies. Active CTF player, ranked top 2% on TryHackMe.
           </p>
         </div>
       </section>
@@ -417,12 +536,37 @@
         <h2 class="section-title"><span>//</span> Work Experience</h2>
         <div class="card">
           <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup)</h3>
-          <p><em>Mar 2024 – Mar 2025 // Hyderabad, India</em></p>
+          <p><em>Mar 2024 – Mar 2025</em></p>
           <ul>
-            <li class="list-item">Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats.</li>
-            <li class="list-item">Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, and other OWASP Top 10 vulnerabilities.</li>
-            <li class="list-item">Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
+            <li class="list-item">Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and a strong understanding of Active Directory attack paths to proactively hunt for and respond to specific threats, including credential dumping via LSASS access and lateral movement.</li>
+            <li class="list-item">Conducted web application penetration testing using Burp Suite to identify vulnerabilities such as XSS, SQL injection, and broken authentication, delivering detailed reports with risk ratings and remediation steps.</li>
+            <li class="list-item">Contributed to SIEM detection coverage and threat correlation efforts by mapping attacker TTPs to the MITRE ATT&CK framework, which enhanced the team's ability to identify multi-stage attacks.</li>
           </ul>
+        </div>
+        <div class="card">
+            <h3>Cybersecurity Analyst (Internship)</h3>
+            <p><em>Aug 2023 – Feb 2024</em></p>
+            <ul>
+              <li class="list-item">Streamlined the phishing investigation process by performing a detailed analysis of email headers, attachments, and malicious URLs, which led to a 30% reduction in false positives.</li>
+              <li class="list-item">Strengthened the organisation's email security posture by implementing and validating SPF, DKIM, and DMARC to mitigate email spoofing and phishing.</li>
+              <li class="list-item">Contributed to a lab-based SIEM project using Splunk, where I tested detection rules with simulated attacks to enhance coverage for brute-force (MITRE T1110) and phishing (MITRE T1566) attacks.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Cybersecurity Intern – C-DAC (Centre for Advanced Computing)</h3>
+            <p><em>Aug 2023 – Sep 2023</em></p>
+            <ul>
+              <li class="list-item">Researched and analysed critical vulnerabilities, including Log4Shell (CVE-2021-44228) and MOVEit (CVE-2023-34362), providing senior analysts with actionable risk summaries and mitigation recommendations.</li>
+              <li class="list-item">Assisted in evidence collection and maintained chain-of-custody documentation for simulated security incidents, enhancing the integrity of forensic workflows.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Bug Bounty Researcher (Freelance)</h3>
+            <ul>
+              <li class="list-item"><b>Steam URI Manipulation:</b> Discovered a vulnerability in Steam's rungameid URI scheme, allowing game manipulation. Suggested implementing secure identifiers and a tokenised URI scheme.</li>
+              <li class="list-item"><b>IDOR in Government Portal:</b> Exploited an insecure direct object reference to access user medical data without authentication, responsibly reported for remediation.</li>
+              <li class="list-item"><b>Reflected XSS & Drive-by Download:</b> Discovered reflected XSS on a live site and chained it to deliver a drive-by download payload, demonstrating automated malware delivery.</li>
+            </ul>
         </div>
       </section>
 
@@ -455,16 +599,47 @@
             </div>
         </div>
       </section>
-
+      
       <section id="projects" class="section">
         <h2 class="section-title"><span>//</span> Projects</h2>
         <div class="card">
-          <h3>Automated Bug Bounty Workflow</h3>
-          <p>Modular pipeline integrating subdomain enumeration, port scanning, and vulnerability scanning, reducing manual effort by 50%.</p>
+          <h3>Automated Bug Bounty Workflow with Raspberry Pi</h3>
+          <p>Engineered a modular, multi-threaded bug bounty automation pipeline. Integrated tools for subdomain enumeration, port scanning, parameter discovery, and vulnerability scanning. Reduced manual effort by 50% and auto-generated reports.</p>
         </div>
         <div class="card">
           <h3>Evil Twin Attack Using NodeMCU</h3>
-          <p>Rogue access point with fake captive portal and deauth attacks to capture credentials, demonstrating Wi-Fi exploitation.</p>
+          <p>Executed a full-chain rogue access point attack. Used NodeMCU to host a fake captive portal and aireplay-ng to deauthenticate victims, capturing credentials when users connected to the malicious AP.</p>
+        </div>
+        <div class="card">
+            <h3>Rubber Ducky Attack with Raspberry Pi Pico</h3>
+            <p>Built a HID-based attack device emulating keystrokes to extract saved Wi-Fi credentials from Windows systems. Data was exfiltrated to a remote server via Webhook, demonstrating risks of physical access.</p>
+        </div>
+      </section>
+
+      <!-- NEW TRYHACKME SECTION -->
+      <section id="tryhackme" class="section">
+        <h2 class="section-title"><span>//</span> TryHackMe Profile</h2>
+        <div class="tryhackme-section">
+            <div class="tryhackme-graphic">
+                <!-- This div is intentionally left empty. It's styled by CSS. -->
+            </div>
+            <div class="tryhackme-content">
+                <h3><span>[</span> unabletofinduser <span>]</span></h3>
+                <div class="tryhackme-stats">
+                    <div class="stat">
+                        <div class="stat-number">Top 2%</div>
+                        <div class="stat-label">Ranking in India</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">142+</div>
+                        <div class="stat-label">Rooms Completed</div>
+                    </div>
+                </div>
+                <p>Actively honing skills in real-world scenarios, from penetration testing to digital forensics. Always learning, always hacking.</p>
+                <a href="https://tryhackme.com/p/unabletofinduser" target="_blank" rel="noopener noreferrer" class="read-more-btn" style="margin-top: 1.5rem;">
+                    View Profile <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
         </div>
       </section>
 
@@ -491,8 +666,7 @@
             </div>
         </div>
       </section>
-
-
+      
       <section id="certifications" class="section">
         <h2 class="section-title"><span>//</span> Certifications</h2>
         <div class="card">
@@ -500,8 +674,20 @@
             <li class="list-item">CRTP – Certified Red Team Professional</li>
             <li class="list-item">CEH – Certified Ethical Hacker V12 (2024–2027)</li>
             <li class="list-item">CRTA – Certified Red Team Analyst (Expires: Aug 2025)</li>
-            <li class="list-item">TryHackMe – Top 2% Globally</li>
+            <li class="list-item">CC – Certified in Cybersecurity - ISC²</li>
+            <li class="list-item">CAP - Certified AppSec Practitioner</li>
           </ul>
+        </div>
+      </section>
+
+      <!-- NEW RESUME SECTION -->
+      <section id="resume" class="section">
+        <h2 class="section-title"><span>//</span> My Resume</h2>
+        <div class="card resume-card">
+            <p>Interested in the full details? My comprehensive resume contains a complete overview of my skills, experience, and education.</p>
+            <a href="https://docs.google.com/document/d/1w1BtFqwFMbFr6WOoWa82yn-KEllWQ21nVUXKZ9rphMw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="resume-btn" style="margin-top: 1.5rem;">
+                View Resume <i class="fas fa-download"></i>
+            </a>
         </div>
       </section>
 
@@ -509,10 +695,10 @@
         <h2 class="section-title"><span>//</span> Get In Touch</h2>
         <div class="card" style="text-align: center;">
           <p>Email: <a href="mailto:akshu4875@gmail.com" style="color:var(--accent-color); text-decoration:none;">akshu4875@gmail.com</a></p>
-          <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem;">
-            <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="color: var(--secondary-text); font-size: 2rem;"><i class="fab fa-linkedin"></i></a>
-            <a href="https://medium.com/@akshu4875" target="_blank" rel="noopener noreferrer" title="Medium" style="color: var(--secondary-text); font-size: 2rem;"><i class="fab fa-medium"></i></a>
-            <a href="https://github.com/akshu4875" target="_blank" rel="noopener noreferrer" title="GitHub" style="color: var(--secondary-text); font-size: 2rem;"><i class="fab fa-github"></i></a>
+          <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2.5rem;">
+            <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="color: var(--secondary-text); font-size: 2.5rem; transition: color 0.3s ease, transform 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://medium.com/@akshu4875" target="_blank" rel="noopener noreferrer" title="Medium" style="color: var(--secondary-text); font-size: 2.5rem; transition: color 0.3s ease, transform 0.3s ease;"><i class="fab fa-medium"></i></a>
+            <a href="https://github.com/akshu4875" target="_blank" rel="noopener noreferrer" title="GitHub" style="color: var(--secondary-text); font-size: 2.5rem; transition: color 0.3s ease, transform 0.3s ease;"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </section>
@@ -524,16 +710,34 @@
       const mobileMenu = document.getElementById("mobile-menu");
       const navLinks = document.getElementById("nav-links");
 
-      mobileMenu.addEventListener("click", () => {
+      // --- Mobile Menu Toggle ---
+      mobileMenu.addEventListener("click", (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
       });
 
+      // --- Smooth scrolling & close menu on link click ---
       document.querySelectorAll(".nav-links a").forEach((anchor) => {
-        anchor.addEventListener("click", function () {
-          navLinks.classList.remove("active");
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove("active");
+            mobileMenu.classList.remove("active");
+          }
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+              window.scrollTo({
+                  top: targetElement.offsetTop - 80, // Offset for fixed header
+                  behavior: 'smooth'
+              });
+          }
         });
       });
 
+      // --- Animate sections on scroll ---
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
