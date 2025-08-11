@@ -1,350 +1,503 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Akshay Somidi | Cybersecurity Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akshay Somidi | Cybernetic Nexus</title>
   
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome for icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   
   <style>
     :root {
-      --bg: #0a0e14;
-      --neon-green: #00ff99;
-      --neon-blue: #00ccff;
-      --text-light: #c7f0db;
-      --text-muted: #6a7f8a;
-      --card-bg: #121820;
-      --shadow-neon: #00ff9955;
+      --bg-color: #0a0e14;
+      --text-color: #e0f7fa;
+      --accent-neon-green: #00ff99;
+      --accent-neon-blue: #00ccff;
+      --card-bg: #111a21;
+      --border-color: #00ff99;
+      --border-glow: 0 0 8px var(--accent-neon-green);
     }
+    
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
-      background: var(--bg);
-      font-family: 'Roboto', sans-serif;
-      color: var(--text-light);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Share Tech Mono', monospace;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    a {
-      color: var(--neon-blue);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: var(--neon-green);
-    }
+    
     .container {
-      max-width: 960px;
-      margin: 2rem auto 4rem;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 2rem;
     }
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
+    
+    /* Header & Navigation */
+    .header {
+      background: var(--bg-color);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--border-color);
+      box-shadow: var(--border-glow);
     }
-    header h1 {
-      font-family: 'Share Tech Mono', monospace;
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
       font-weight: 700;
-      font-size: 3.2rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.25rem;
-      color: var(--neon-green);
-      text-shadow:
-        0 0 5px var(--neon-green),
-        0 0 15px var(--neon-green),
-        0 0 20px var(--neon-green);
+      color: var(--accent-neon-blue);
+      text-shadow: 0 0 5px var(--accent-neon-blue), 0 0 10px var(--accent-neon-blue);
+      text-decoration: none;
+      transition: color 0.3s;
     }
-    header p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
     }
-    /* Animated typing effect */
-    .typing {
+    
+    .nav-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 1rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent-neon-green);
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent-neon-green);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1549605809-58ae49f5723b?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover;
+      opacity: 0.1;
+      animation: noise-effect 2s infinite alternate;
+    }
+    
+    .hero-content {
+      z-index: 1;
+      position: relative;
+      margin: auto;
+    }
+    
+    .hero-content h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 8vw, 4.5rem);
+      color: var(--accent-neon-green);
+      text-shadow: 0 0 10px var(--accent-neon-green), 0 0 20px var(--accent-neon-green);
+      margin-bottom: 0.5rem;
+      animation: text-glow 2s infinite alternate;
+    }
+    
+    .hero-content h2 {
+      font-size: clamp(1rem, 4vw, 2rem);
+      color: var(--accent-neon-blue);
+      text-shadow: 0 0 5px var(--accent-neon-blue);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-content p {
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      color: var(--text-color);
+      animation: fadeIn 3s forwards;
+    }
+    
+    .typing-effect {
       font-family: 'Share Tech Mono', monospace;
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      color: var(--neon-blue);
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      color: var(--accent-neon-green);
       white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid var(--neon-blue);
+      border-right: 2px solid var(--accent-neon-green);
+      width: 0;
       animation: typing 3.8s steps(35) forwards, blink 0.7s infinite step-end alternate;
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
+      display: inline-block;
+      margin-top: 1rem;
     }
+    
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
     }
+    
     @keyframes blink {
       50% { border-color: transparent }
     }
     
-    section {
-      margin-bottom: 3rem;
+    @keyframes text-glow {
+      from { text-shadow: 0 0 10px var(--accent-neon-green), 0 0 20px var(--accent-neon-green); }
+      to { text-shadow: 0 0 15px var(--accent-neon-green), 0 0 30px var(--accent-neon-green); }
     }
-    h2 {
-      font-family: 'Share Tech Mono', monospace;
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--neon-green);
-      text-shadow:
-        0 0 5px var(--neon-green),
-        0 0 10px var(--neon-green);
-      border-bottom: 2px solid var(--neon-green);
-      padding-bottom: 6px;
+    
+    @keyframes noise-effect {
+      from { transform: translateX(0) translateY(0); }
+      to { transform: translateX(5%) translateY(5%); }
     }
-    /* Cards for Experience, Projects */
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Main Content Sections */
+    .section {
+      padding: 4rem 0;
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--accent-neon-blue);
+      text-shadow: 0 0 5px var(--accent-neon-blue), 0 0 10px var(--accent-neon-blue);
+      margin-bottom: 2rem;
+      border-bottom: 3px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+    
     .card {
       background: var(--card-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
-      box-shadow:
-        0 0 10px var(--shadow-neon);
-      padding: 20px 25px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.25s ease;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: var(--border-glow);
     }
+    
     .card:hover {
-      transform: scale(1.02);
-      box-shadow:
-        0 0 20px var(--neon-green);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 20px var(--accent-neon-green);
     }
+    
     .card h3 {
-      margin-top: 0;
-      font-family: 'Share Tech Mono', monospace;
-      font-weight: 700;
-      color: var(--neon-blue);
-      text-shadow:
-        0 0 5px var(--neon-blue),
-        0 0 10px var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent-neon-green);
+      margin-bottom: 0.5rem;
     }
+    
     .card p {
-      font-weight: 300;
-      color: var(--text-light);
+      color: var(--text-color);
       white-space: pre-line;
     }
-    /* Lists */
-    ul {
-      list-style: none;
-      padding-left: 0;
+    
+    .experience-item, .project-item {
+      margin-bottom: 2rem;
     }
-    ul li {
-      padding-left: 1.5em;
-      position: relative;
+    
+    .list-item {
+      list-style-type: '▹';
+      padding-left: 1rem;
       margin-bottom: 0.5rem;
-      font-weight: 300;
-      color: var(--text-light);
     }
-    ul li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--neon-green);
-      font-weight: 700;
+    
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
-    /* Skills bars */
-    .skill {
+    
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--border-glow);
+    }
+    
+    .skill-category h3 {
+      color: var(--accent-neon-green);
+      font-family: 'Orbitron', sans-serif;
       margin-bottom: 1rem;
     }
-    .skill-name {
-      font-family: 'Share Tech Mono', monospace;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--neon-blue);
-      text-shadow:
-        0 0 5px var(--neon-blue);
-    }
-    .skill-bar {
-      width: 100%;
-      background: #222b2b;
-      border-radius: 6px;
-      height: 18px;
-      box-shadow: inset 0 0 5px #000;
-      overflow: hidden;
-    }
-    .skill-level {
-      height: 100%;
-      background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-      box-shadow: 0 0 8px var(--neon-green);
-      transition: width 1.2s ease-in-out;
-    }
-    /* Contact links */
+    
+    /* Contact Section */
     .contact-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.4rem;
       justify-content: center;
-      margin-top: 1rem;
+      gap: 2rem;
+      margin-top: 2rem;
     }
+    
     .contact-links a {
-      font-size: 1.4rem;
-      color: var(--neon-green);
-      text-shadow:
-        0 0 5px var(--neon-green);
-      transition: color 0.3s ease;
+      font-size: 2rem;
+      color: var(--accent-neon-green);
+      transition: color 0.3s, transform 0.3s;
+      text-shadow: 0 0 5px var(--accent-neon-green);
     }
+    
     .contact-links a:hover {
-      color: var(--neon-blue);
+      color: var(--accent-neon-blue);
+      transform: scale(1.2);
     }
-    /* Responsive */
-    @media (max-width: 720px) {
-      .container {
-        padding: 0 15px;
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
       }
-      .card {
-        padding: 15px 20px;
+      
+      .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 1rem;
       }
-      h2 {
-        font-size: 1.5rem;
+      
+      .nav-links a {
+        padding: 0.25rem 0;
+      }
+      
+      .section {
+        padding: 2rem 0;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Akshay Somidi</h1>
-      <p>Cybersecurity Professional | Active Directory Security | Offensive & Defensive</p>
-      <div class="typing">Active Directory Security • Red Team • Blue Team • EDR Analysis • Bug Bounty</div>
-    </header>
 
-    <section id="summary">
-      <h2>Professional Summary</h2>
-      <p>
-        Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.<br><br>
-        CRTP-certified with skills in AD enumeration, privilege escalation, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.<br><br>
-        Active CTF player, ranked top 2% on TryHackMe.
-      </p>
-    </section>
-
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <ul>
-        <li>CRTP – Certified Red Team Professional</li>
-        <li>CEH – Certified Ethical Hacker V12 (2024–2027) ID: ECC4980637521</li>
-        <li>CRTA – Certified Red Team Analyst (7/23/2025) ID: CRTA-6880844991ele7894fd3b18d</li>
-        <li>CC – Certified in Cybersecurity - ISC²</li>
-        <li>CAP - Certified AppSec Practitioner ID: 9447593</li>
-        <li>TryHackMe – Junior Penetration Tester Path - Completed 140+ red/blue team labs; ranked top 2% globally</li>
-      </ul>
-    </section>
-
-    <section id="experience">
-      <h2>Work Experience</h2>
-
-      <div class="card">
-        <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup) Hyderabad, India</h3>
-        <p><em>Mar 2024 – Mar 2025</em></p>
-        <ul>
-          <li>Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats such as credential dumping and lateral movement.</li>
-          <li>Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, broken authentication with detailed reports.</li>
-          <li>Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">akshay.dev</a>
+        <ul class="nav-links">
+          <li><a href="#summary">Summary</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      </div>
+      </nav>
+    </div>
+  </header>
 
-      <div class="card">
-        <h3>Cybersecurity Analyst (Internship) – TriArmour AI Private Limited</h3>
-        <p><em>Aug 2023 – Feb 2024</em></p>
-        <ul>
-          <li>Streamlined phishing investigations by analyzing email headers and malicious URLs, reducing false positives by 30%.</li>
-          <li>Implemented SPF, DKIM, and DMARC to strengthen email security.</li>
-          <li>Contributed to Splunk SIEM project testing detection rules for brute-force and phishing attacks.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Cybersecurity Intern – C-DAC Hyderabad, India</h3>
-        <p><em>Aug 2023 – Sep 2023</em></p>
-        <ul>
-          <li>Researched vulnerabilities like Log4Shell and MOVEit, providing mitigation recommendations.</li>
-          <li>Assisted in evidence collection and forensic workflow improvements.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Bug Bounty Researcher (Freelance)</h3>
-        <ul>
-          <li>Discovered URI manipulation in Steam’s rungameid scheme and suggested mitigations.</li>
-          <li>Reported an IDOR vulnerability in Telangana Govt portal exposing medical data.</li>
-          <li>Found reflected XSS and drive-by download chains in corporate environment.</li>
-        </ul>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <h1>AKSHAY SOMIDI</h1>
+        <h2>Cybersecurity Professional | AD Security Specialist</h2>
+        <p class="typing-effect">_Active Directory Security • Red Team • Blue Team • EDR Analysis • Bug Bounty</p>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Technical Skills</h2>
+    <div class="container">
+      <section id="summary" class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p>
+          Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.
+          <br><br>
+          CRTP-certified with skills in AD enumeration, privilege escalation, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.
+          <br><br>
+          Active CTF player, ranked top 2% on TryHackMe.
+        </p>
+      </section>
 
-      <h3 style="color: var(--neon-green); margin-bottom: 0.5rem;">Blue Team</h3>
-      <ul>
-        <li>Threat hunting with Windows Event Logs & Sysmon, EDR telemetry analysis</li>
-        <li>Tracking persistence, triaging alerts in Bitdefender & Sophos</li>
-        <li>Monitoring network traffic & firewall/IDS alerts, MITRE ATT&CK mapping</li>
-      </ul>
+      <section id="certifications" class="section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="card">
+          <ul>
+            <li class="list-item">CRTP – Certified Red Team Professional</li>
+            <li class="list-item">CEH – Certified Ethical Hacker V12 (2024–2027) ID: ECC4980637521</li>
+            <li class="list-item">CRTA – Certified Red Team Analyst (7/23/2025) ID: CRTA-6880844991ele7894fd3b18d</li>
+            <li class="list-item">CC – Certified in Cybersecurity - ISC²</li>
+            <li class="list-item">CAP - Certified AppSec Practitioner ID: 9447593</li>
+            <li class="list-item">TryHackMe – Junior Penetration Tester Path - Completed 140+ red/blue team labs; ranked top 2% globally</li>
+          </ul>
+        </div>
+      </section>
 
-      <h3 style="color: var(--neon-green); margin-top: 1.2rem; margin-bottom: 0.5rem;">Red Team</h3>
-      <ul>
-        <li>Advanced AD enumeration, ACL abuse, Kerberos attacks (Kerberoasting, Golden/Silver Tickets)</li>
-        <li>Lateral movement, domain persistence, EDR evasion including MDE bypass</li>
-        <li>Web app pentesting (XSS, SQLi, SSRF), local privilege escalation on Windows/Linux</li>
-      </ul>
+      <section id="experience" class="section">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="card experience-item">
+          <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup) Hyderabad, India</h3>
+          <p><em>Mar 2024 – Mar 2025</em></p>
+          <ul>
+            <li class="list-item">Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats such as credential dumping and lateral movement.</li>
+            <li class="list-item">Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, broken authentication with detailed reports.</li>
+            <li class="list-item">Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
+          </ul>
+        </div>
+        <div class="card experience-item">
+          <h3>Cybersecurity Analyst (Internship) – TriArmour AI Private Limited</h3>
+          <p><em>Aug 2023 – Feb 2024</em></p>
+          <ul>
+            <li class="list-item">Streamlined phishing investigations by analyzing email headers and malicious URLs, reducing false positives by 30%.</li>
+            <li class="list-item">Implemented SPF, DKIM, and DMARC to strengthen email security.</li>
+            <li class="list-item">Contributed to Splunk SIEM project testing detection rules for brute-force and phishing attacks.</li>
+          </ul>
+        </div>
+        <div class="card experience-item">
+          <h3>Cybersecurity Intern – C-DAC Hyderabad, India</h3>
+          <p><em>Aug 2023 – Sep 2023</em></p>
+          <ul>
+            <li class="list-item">Researched vulnerabilities like Log4Shell and MOVEit, providing mitigation recommendations.</li>
+            <li class="list-item">Assisted in evidence collection and forensic workflow improvements.</li>
+          </ul>
+        </div>
+        <div class="card experience-item">
+          <h3>Bug Bounty Researcher (Freelance)</h3>
+          <ul>
+            <li class="list-item">Discovered URI manipulation in Steam’s rungameid scheme and suggested mitigations.</li>
+            <li class="list-item">Reported an IDOR vulnerability in Telangana Govt portal exposing medical data.</li>
+            <li class="list-item">Found reflected XSS and drive-by download chains in corporate environment.</li>
+          </ul>
+        </div>
+      </section>
 
-      <h3 style="color: var(--neon-green); margin-top: 1.2rem; margin-bottom: 0.5rem;">Basics & Frameworks</h3>
-      <ul>
-        <li>Network fundamentals (TCP/IP, DNS, DHCP), Windows & Linux OS basics, firewall & IDS/IPS concepts</li>
-        <li>SIEM basics, incident response, cybersecurity policies</li>
-        <li>Python and PowerShell scripting</li>
-        <li>MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10, Diamond Model</li>
-      </ul>
-    </section>
+      <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div class="card project-item">
+          <h3>Automated Bug Bounty Workflow with Raspberry Pi</h3>
+          <p>Modular pipeline integrating subdomain enumeration, port scanning, parameter discovery, and vulnerability scanning, reducing manual effort by 50% and auto-generating HTML/PDF reports.</p>
+        </div>
+        <div class="card project-item">
+          <h3>Evil Twin Attack Using NodeMCU</h3>
+          <p>Rogue access point with fake captive portal and deauthentication attacks to capture credentials, demonstrating Wi-Fi exploitation and social engineering.</p>
+        </div>
+        <div class="card project-item">
+          <h3>Rubber Ducky Attack with Raspberry Pi Pico</h3>
+          <p>HID-based keystroke injection extracting Wi-Fi credentials and exfiltrating via webhook, showing risks of physical access and HID spoofing.</p>
+        </div>
+      </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+      <section id="skills" class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Blue Team</h3>
+            <ul>
+              <li class="list-item">Threat hunting with Windows Event Logs & Sysmon, EDR telemetry analysis</li>
+              <li class="list-item">Tracking persistence, triaging alerts in Bitdefender & Sophos</li>
+              <li class="list-item">Monitoring network traffic & firewall/IDS alerts, MITRE ATT&CK mapping</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Red Team</h3>
+            <ul>
+              <li class="list-item">Advanced AD enumeration, ACL abuse, Kerberos attacks (Kerberoasting, Golden/Silver Tickets)</li>
+              <li class="list-item">Lateral movement, domain persistence, EDR evasion including MDE bypass</li>
+              <li class="list-item">Web app pentesting (XSS, SQLi, SSRF), local privilege escalation on Windows/Linux</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Basics & Frameworks</h3>
+            <ul>
+              <li class="list-item">Network fundamentals (TCP/IP, DNS, DHCP), Windows & Linux OS basics, firewall & IDS/IPS concepts</li>
+              <li class="list-item">SIEM basics, incident response, cybersecurity policies</li>
+              <li class="list-item">Python and PowerShell scripting</li>
+              <li class="list-item">MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10, Diamond Model</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <div class="card">
-        <h3>Automated Bug Bounty Workflow with Raspberry Pi</h3>
-        <p>Modular pipeline integrating subdomain enumeration, port scanning, parameter discovery, and vulnerability scanning, reducing manual effort by 50% and auto-generating HTML/PDF reports.</p>
-      </div>
+      <section id="education" class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+          <p><strong>Sri Indu College of Engineering and Technology, Hyderabad, India</strong><br>Bachelor of Technology in Cyber Security (Nov 2021 – May 2025)</p>
+          <p><strong>Sri Chaitanya Junior College, Hyderabad, India</strong><br>Intermediate Public Education (2019 – 2021)</p>
+        </div>
+      </section>
 
-      <div class="card">
-        <h3>Evil Twin Attack Using NodeMCU</h3>
-        <p>Rogue access point with fake captive portal and deauthentication attacks to capture credentials, demonstrating Wi-Fi exploitation and social engineering.</p>
-      </div>
-
-      <div class="card">
-        <h3>Rubber Ducky Attack with Raspberry Pi Pico</h3>
-        <p>HID-based keystroke injection extracting Wi-Fi credentials and exfiltrating via webhook, showing risks of physical access and HID spoofing.</p>
-      </div>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <p><strong>Sri Indu College of Engineering and Technology, Hyderabad, India</strong><br />Bachelor of Technology in Cyber Security (Nov 2021 – May 2025)</p>
-      <p><strong>Sri Chaitanya Junior College, Hyderabad, India</strong><br />Intermediate Public Education (2019 – 2021)</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:akshu4875@gmail.com">akshu4875@gmail.com</a></p>
-      <div class="contact-links" aria-label="social media links">
-        <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://medium.com/@akshu4875" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
-        <a href="https://github.com/akshu4875" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      </div>
-    </section>
-  </div>
+      <section id="contact" class="section">
+        <h2 class="section-title">Contact</h2>
+        <div class="card">
+          <p>Email: <a href="mailto:akshu4875@gmail.com" style="color: var(--accent-neon-blue); text-decoration: none;">akshu4875@gmail.com</a></p>
+          <div class="contact-links" aria-label="social media links">
+            <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://medium.com/@akshu4875" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+            <a href="https://github.com/akshu4875" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100, /* Adjust for fixed header */
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
