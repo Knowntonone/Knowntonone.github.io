@@ -1,460 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akshay Somidi | Cybersecurity Portfolio</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  
-  <style>
-    /* Theme Variables */
-    :root {
-      --bg-color: #0d1117;
-      --text-color-primary: #e6edf3;
-      --text-color-secondary: #8b949e;
-      --accent-color: #00aaff;
-      --card-bg: #161b22;
-      --border-color: #30363d;
-      --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      --font-mono: 'Fira Code', monospace;
-      --font-sans: 'Roboto', sans-serif;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    body {
-      background: var(--bg-color);
-      color: var(--text-color-primary);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-      
-      /* Subtle background image theme */
-      background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      position: relative;
-    }
-    
-    /* Overlay for text readability */
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(13, 17, 23, 0.85); /* Dark overlay */
-      z-index: -1;
-    }
-    
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    /* Header and Navigation */
-    .header {
-      background-color: var(--bg-color);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-family: var(--font-mono);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .logo:hover {
-      color: var(--text-color-primary);
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    
-    .nav-links a {
-      color: var(--text-color-secondary);
-      text-decoration: none;
-      font-family: var(--font-sans);
-      font-weight: 400;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-links a:hover {
-      color: var(--text-color-primary);
-    }
-    
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--accent-color);
-      left: 0;
-      bottom: -5px;
-      transition: width 0.3s ease;
-    }
-    
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    
-    /* Hero Section */
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 4rem 0;
-    }
-    
-    .hero-content {
-      max-width: 700px;
-    }
-    
-    .hero-content h1 {
-      font-family: var(--font-mono);
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-    
-    .hero-content h2 {
-      font-family: var(--font-sans);
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--text-color-secondary);
-      margin-bottom: 2rem;
-    }
-    
-    .typing-effect {
-      font-family: var(--font-mono);
-      color: var(--text-color-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid var(--accent-color);
-      width: 0;
-      animation: typing 3.8s steps(35) forwards, blink 0.7s infinite step-end alternate;
-      display: inline-block;
-    }
-    
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    
-    /* Main Content Sections */
-    .section {
-      padding: 4rem 0;
-    }
-    
-    .section-title {
-      font-family: var(--font-mono);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
-    }
-    
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    }
-    
-    .card h3 {
-      font-family: var(--font-mono);
-      font-size: 1.25rem;
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-    
-    .card p {
-      color: var(--text-color-secondary);
-      white-space: pre-line;
-      margin-bottom: 0.5rem;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Akshay Somidi | Cybersecurity Portfolio</title>
 
-    ul {
-      list-style-type: none;
-      padding-left: 0;
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+  /* Root variables */
+  :root {
+    --bg-dark: #0c0f17;
+    --bg-overlay: rgba(12, 15, 23, 0.85);
+    --neon-green: #00ff99;
+    --neon-blue: #00ccff;
+    --neon-red: #ff3366;
+    --text-light: #d0f0d8;
+    --text-muted: #6e7a88;
+    --shadow-neon: #00ff9940;
+    --font-mono: 'Fira Code', monospace;
+    --font-sans: 'Open Sans', sans-serif;
+  }
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Background matrix style with falling binary */
+  #matrix-bg {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    background: var(--bg-dark);
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Overlay to soften bg behind content */
+  #overlay {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: var(--bg-overlay);
+    z-index: 1;
+  }
+
+  /* Navbar */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #0b0e15dd;
+    border-bottom: 1.5px solid var(--neon-green);
+    box-shadow:
+      0 0 12px var(--neon-green);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.1rem 0;
+  }
+  nav button {
+    background: none;
+    border: none;
+    color: var(--neon-green);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.15rem;
+    cursor: pointer;
+    padding: 0.45rem 1.3rem;
+    letter-spacing: 1.5px;
+    text-shadow:
+      0 0 6px var(--neon-green),
+      0 0 15px var(--neon-green);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    border-radius: 6px;
+  }
+  nav button:hover,
+  nav button.active {
+    color: var(--neon-blue);
+    text-shadow:
+      0 0 20px var(--neon-blue),
+      0 0 35px var(--neon-blue);
+    outline: none;
+    background: rgba(0, 204, 255, 0.1);
+  }
+  nav button:focus-visible {
+    outline: 2px solid var(--neon-blue);
+  }
+
+  /* Main content wrapper */
+  main {
+    max-width: 1000px;
+    margin: 6.5rem auto 4rem;
+    padding: 0 2rem 4rem;
+    position: relative;
+    z-index: 2;
+    min-height: 80vh;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  /* Left content (text) */
+  #content {
+    flex: 1 1 600px;
+    min-width: 300px;
+  }
+
+  /* Right side anime hacker image */
+  #hero-img {
+    flex: 0 0 300px;
+    background: url('https://i.imgur.com/udFtgAu.png') center bottom no-repeat;
+    background-size: contain;
+    opacity: 0.25;
+    filter: drop-shadow(0 0 8px var(--neon-green));
+    user-select: none;
+    pointer-events: none;
+    position: sticky;
+    top: 6.5rem;
+    height: 500px;
+  }
+  @media (max-width: 920px) {
+    main {
+      flex-direction: column;
+      margin-top: 5rem;
     }
-    
-    .list-item {
+    #hero-img {
+      height: 250px;
+      opacity: 0.15;
       position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-color-primary);
+      order: -1;
+      margin-bottom: 2rem;
     }
-    
-    .list-item::before {
-      content: '»'; /* A subtle arrow for list items */
-      color: var(--accent-color);
-      font-size: 1.25rem;
-      position: absolute;
-      left: 0;
-      line-height: 1;
-    }
-    
-    .contact-links {
-      display: flex;
-      justify-content: center;
+  }
+
+  /* Header */
+  header {
+    margin-bottom: 3rem;
+    user-select: none;
+  }
+  header h1 {
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--neon-green);
+    letter-spacing: 5px;
+    text-shadow:
+      0 0 15px var(--neon-green),
+      0 0 30px var(--neon-green);
+  }
+  header .tagline {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-top: 0.6rem;
+    color: var(--neon-blue);
+    border-right: 3px solid var(--neon-blue);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4.2s steps(40) forwards, blink 1.2s step-end infinite;
+    max-width: 100%;
+    user-select: text;
+  }
+  @keyframes typing {
+    to { width: 100%; }
+  }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 3.5rem;
+    background: #121b29cc;
+    border-radius: 12px;
+    box-shadow:
+      0 0 25px var(--shadow-neon);
+    padding: 2rem 2.5rem;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h2 {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+    letter-spacing: 1.2px;
+    text-shadow:
+      0 0 15px var(--neon-green);
+    border-bottom: 3px solid var(--neon-green);
+    padding-bottom: 8px;
+    user-select: text;
+  }
+  section p,
+  section ul,
+  .card p,
+  .card ul {
+    font-size: 1.12rem;
+    font-weight: 400;
+    color: var(--text-light);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    user-select: text;
+  }
+  ul {
+    padding-left: 1.8rem;
+  }
+  ul li {
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  ul li::before {
+    content: "▹";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--neon-green);
+    font-weight: 800;
+  }
+
+  /* Cards */
+  .card {
+    background: #0e1620;
+    border-radius: 10px;
+    box-shadow:
+      0 0 12px var(--neon-green);
+    padding: 1.4rem 1.8rem;
+    margin-bottom: 1.7rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 30px var(--neon-blue);
+  }
+  .card h3 {
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 1.45rem;
+    color: var(--neon-blue);
+    margin-bottom: 0.4rem;
+    text-shadow:
+      0 0 15px var(--neon-blue);
+  }
+
+  /* Skills grid */
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.6rem;
+  }
+  .skills-list ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .skills-list ul li {
+    padding-left: 1.5em;
+    position: relative;
+  }
+  .skills-list ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--neon-green);
+    font-weight: 800;
+  }
+
+  /* Contact icons */
+  .contact-links {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .contact-links a {
+    font-size: 2.5rem;
+    margin: 0 1.3rem;
+    color: var(--neon-green);
+    text-shadow:
+      0 0 15px var(--neon-green);
+    transition: color 0.3s ease;
+  }
+  .contact-links a:hover {
+    color: var(--neon-blue);
+  }
+
+  /* Links */
+  a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  a:hover {
+    color: var(--neon-green);
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    main {
       gap: 2rem;
-      margin-top: 2rem;
     }
-    
-    .contact-links a {
-      font-size: 2rem;
-      color: var(--text-color-secondary);
-      transition: color 0.3s ease, transform 0.3s ease;
+  }
+  @media (max-width: 720px) {
+    main {
+      flex-direction: column;
+      padding: 0 1rem 3rem;
     }
-    
-    .contact-links a:hover {
-      color: var(--accent-color);
-      transform: scale(1.1);
+    #hero-img {
+      position: relative;
+      height: 220px;
+      opacity: 0.12;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 6px var(--neon-green));
     }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .hero-content h2 {
-        font-size: 1.2rem;
-      }
-      .section-title {
-        font-size: 1.5rem;
-      }
+    header h1 {
+      font-size: 3rem;
     }
-  </style>
+    header .tagline {
+      font-size: 1.3rem;
+    }
+    nav {
+      gap: 1rem;
+      padding: 0.7rem 0;
+    }
+    nav button {
+      font-size: 1rem;
+      padding: 0.4rem 1rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    nav button {
+      padding: 0.35rem 0.6rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="container">
-      <nav class="navbar">
-        <a href="#" class="logo">akshay.dev</a>
-        <ul class="nav-links">
-          <li><a href="#summary">Summary</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<!-- Matrix binary rain background -->
+<div id="matrix-bg"><canvas id="matrix-canvas"></canvas></div>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-content">
-        <h1>AKSHAY SOMIDI</h1>
-        <h2>Cybersecurity Professional | AD Security Specialist</h2>
-        <span class="typing-effect">_Active Directory Security • Red Team • Blue Team • EDR Analysis • Bug Bounty</span>
+<!-- Overlay to darken bg -->
+<div id="overlay"></div>
+
+<!-- Navigation -->
+<nav aria-label="Primary navigation">
+  <button class="nav-btn active" data-target="summary">Summary</button>
+  <button class="nav-btn" data-target="certifications">Certifications</button>
+  <button class="nav-btn" data-target="experience">Experience</button>
+  <button class="nav-btn" data-target="skills">Skills</button>
+  <button class="nav-btn" data-target="projects">Projects</button>
+  <button class="nav-btn" data-target="education">Education</button>
+  <button class="nav-btn" data-target="contact">Contact</button>
+</nav>
+
+<!-- Main content and hero image -->
+<main>
+  <div id="content" role="main">
+    <header role="banner">
+      <h1>Akshay Somidi</h1>
+      <div class="tagline" aria-label="Professional tagline">
+        Active Directory Security • Red Team • Blue Team • EDR Analysis • Bug Bounty
+      </div>
+    </header>
+
+    <section id="summary" tabindex="-1" aria-label="Professional Summary" class="hidden">
+      <h2>Professional Summary</h2>
+      <p>
+        Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.<br><br>
+        CRTP-certified with skills in AD enumeration, privilege escalation, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.<br><br>
+        Active CTF player, ranked top 2% on TryHackMe.
+      </p>
+    </section>
+
+    <section id="certifications" tabindex="-1" aria-label="Certifications" class="hidden">
+      <h2>Certifications</h2>
+      <ul>
+        <li>CRTP – Certified Red Team Professional</li>
+        <li>CEH – Certified Ethical Hacker V12 (2024–2027) ID: ECC4980637521</li>
+        <li>CRTA – Certified Red Team Analyst (7/23/2025) ID: CRTA-6880844991ele7894fd3b18d</li>
+        <li>CC – Certified in Cybersecurity - ISC²</li>
+        <li>CAP - Certified AppSec Practitioner ID: 9447593</li>
+        <li>TryHackMe – Junior Penetration Tester Path - Completed 140+ red/blue team labs; ranked top 2% globally</li>
+      </ul>
+    </section>
+
+    <section id="experience" tabindex="-1" aria-label="Work Experience" class="hidden">
+      <h2>Work Experience</h2>
+
+      <article class="card" tabindex="0">
+        <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup) Hyderabad, India</h3>
+        <p><em>Mar 2024 – Mar 2025</em></p>
+        <ul>
+          <li>Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats such as credential dumping and lateral movement.</li>
+          <li>Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, broken authentication with detailed reports.</li>
+          <li>Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
+        </ul>
+      </article>
+
+      <article class="card" tabindex="0">
+        <h3>Cybersecurity Analyst (Internship) – TriArmour AI Private Limited</h3>
+        <p><em>Aug 2023 – Feb 2024</em></p>
+        <ul>
+          <li>Streamlined phishing investigations by analyzing email headers and malicious URLs, reducing false positives by 30%.</li>
+          <li>Implemented SPF, DKIM, and DMARC to strengthen email security.</li>
+          <li>Contributed to Splunk SIEM project testing detection rules for brute-force and phishing attacks.</li>
+        </ul>
+      </article>
+
+      <article class="card" tabindex="0">
+        <h3>Cybersecurity Intern – C-DAC Hyderabad, India</h3>
+        <p><em>Aug 2023 – Sep 2023</em></p>
+        <ul>
+          <li>Researched vulnerabilities like Log4Shell and MOVEit, providing mitigation recommendations.</li>
+          <li>Assisted in evidence collection and forensic workflow improvements.</li>
+        </ul>
+      </article>
+
+      <article class="card" tabindex="0">
+        <h3>Bug Bounty Researcher (Freelance)</h3>
+        <ul>
+          <li>Discovered URI manipulation in Steam’s rungameid scheme and suggested mitigations.</li>
+          <li>Reported an IDOR vulnerability in Telangana Govt portal exposing medical data.</li>
+          <li>Found reflected XSS and drive-by download chains in corporate environment.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="skills" tabindex="-1" aria-label="Technical Skills" class="hidden">
+      <h2>Technical Skills</h2>
+
+      <div class="skills-list">
+        <div>
+          <h3 style="color: var(--neon-green); margin-bottom: 0.5rem;">Blue Team</h3>
+          <ul>
+            <li>Threat hunting with Windows Event Logs & Sysmon, EDR telemetry analysis</li>
+            <li>Tracking persistence, triaging alerts in Bitdefender & Sophos</li>
+            <li>Monitoring network traffic & firewall/IDS alerts, MITRE ATT&CK mapping</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color: var(--neon-green); margin-bottom: 0.5rem;">Red Team</h3>
+          <ul>
+            <li>Advanced AD enumeration, ACL abuse, Kerberos attacks (Kerberoasting, Golden/Silver Tickets)</li>
+            <li>Lateral movement, domain persistence, EDR evasion including MDE bypass</li>
+            <li>Web app pentesting (XSS, SQLi, SSRF), local privilege escalation on Windows/Linux</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color: var(--neon-green); margin-bottom: 0.5rem;">Basics & Frameworks</h3>
+          <ul>
+            <li>Network fundamentals (TCP/IP, DNS, DHCP), Windows & Linux OS basics, firewall & IDS/IPS concepts</li>
+            <li>SIEM basics, incident response, cybersecurity policies</li>
+            <li>Python and PowerShell scripting</li>
+            <li>MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10, Diamond Model</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <div class="container">
-      <section id="summary" class="section">
-        <h2 class="section-title">Professional Summary</h2>
-        <p>
-          Cybersecurity professional with 1 year of hands-on offensive and defensive experience, specializing in Active Directory security. Experienced in investigating AD attacks through log and EDR analysis, detecting credential dumping, lateral movement, and privilege escalation, and mapping to MITRE ATT&CK to enhance Splunk detection.
-          <br><br>
-          CRTP-certified with skills in AD enumeration, privilege escalation, persistence, OPSEC, and AV evasion, running tools in memory and bypassing MDE/MDI on fully patched Server 2022 without triggering alerts. Proven at simulating real-world threats and creating effective detection strategies.
-          <br><br>
-          Active CTF player, ranked top 2% on TryHackMe.
-        </p>
-      </section>
+    <section id="projects" tabindex="-1" aria-label="Projects" class="hidden">
+      <h2>Projects</h2>
 
-      <section id="certifications" class="section">
-        <h2 class="section-title">Certifications</h2>
-        <div class="card">
-          <ul>
-            <li class="list-item">CRTP – Certified Red Team Professional</li>
-            <li class="list-item">CEH – Certified Ethical Hacker V12 (2024–2027) ID: ECC4980637521</li>
-            <li class="list-item">CRTA – Certified Red Team Analyst (7/23/2025) ID: CRTA-6880844991ele7894fd3b18d</li>
-            <li class="list-item">CC – Certified in Cybersecurity - ISC²</li>
-            <li class="list-item">CAP - Certified AppSec Practitioner ID: 9447593</li>
-            <li class="list-item">TryHackMe – Junior Penetration Tester Path - Completed 140+ red/blue team labs; ranked top 2% globally</li>
-          </ul>
-        </div>
-      </section>
+      <article class="card" tabindex="0">
+        <h3>Automated Bug Bounty Workflow with Raspberry Pi</h3>
+        <p>Modular pipeline integrating subdomain enumeration, port scanning, parameter discovery, and vulnerability scanning, reducing manual effort by 50% and auto-generating HTML/PDF reports.</p>
+      </article>
 
-      <section id="experience" class="section">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="card">
-          <h3>Cybersecurity Analyst – TriArmour AI Private Limited (Startup) Hyderabad, India</h3>
-          <p><em>Mar 2024 – Mar 2025</em></p>
-          <ul>
-            <li class="list-item">Leveraged EDR platforms (Bitdefender GravityZone, Sophos MDR) and Active Directory attack paths to hunt and respond to threats such as credential dumping and lateral movement.</li>
-            <li class="list-item">Conducted web app pentesting using Burp Suite to identify XSS, SQL injection, broken authentication with detailed reports.</li>
-            <li class="list-item">Contributed to SIEM detection coverage by mapping attacker TTPs to MITRE ATT&CK, improving multi-stage attack identification.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Cybersecurity Analyst (Internship) – TriArmour AI Private Limited</h3>
-          <p><em>Aug 2023 – Feb 2024</em></p>
-          <ul>
-            <li class="list-item">Streamlined phishing investigations by analyzing email headers and malicious URLs, reducing false positives by 30%.</li>
-            <li class="list-item">Implemented SPF, DKIM, and DMARC to strengthen email security.</li>
-            <li class="list-item">Contributed to Splunk SIEM project testing detection rules for brute-force and phishing attacks.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Cybersecurity Intern – C-DAC Hyderabad, India</h3>
-          <p><em>Aug 2023 – Sep 2023</em></p>
-          <ul>
-            <li class="list-item">Researched vulnerabilities like Log4Shell and MOVEit, providing mitigation recommendations.</li>
-            <li class="list-item">Assisted in evidence collection and forensic workflow improvements.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Bug Bounty Researcher (Freelance)</h3>
-          <ul>
-            <li class="list-item">Discovered URI manipulation in Steam’s rungameid scheme and suggested mitigations.</li>
-            <li class="list-item">Reported an IDOR vulnerability in Telangana Govt portal exposing medical data.</li>
-            <li class="list-item">Found reflected XSS and drive-by download chains in corporate environment.</li>
-          </ul>
-        </div>
-      </section>
+      <article class="card" tabindex="0">
+        <h3>Evil Twin Attack Using NodeMCU</h3>
+        <p>Rogue access point with fake captive portal and deauthentication attacks to capture credentials, demonstrating Wi-Fi exploitation and social engineering.</p>
+      </article>
 
-      <section id="projects" class="section">
-        <h2 class="section-title">Projects</h2>
-        <div class="card">
-          <h3>Automated Bug Bounty Workflow with Raspberry Pi</h3>
-          <p>Modular pipeline integrating subdomain enumeration, port scanning, parameter discovery, and vulnerability scanning, reducing manual effort by 50% and auto-generating HTML/PDF reports.</p>
-        </div>
-        <div class="card">
-          <h3>Evil Twin Attack Using NodeMCU</h3>
-          <p>Rogue access point with fake captive portal and deauthentication attacks to capture credentials, demonstrating Wi-Fi exploitation and social engineering.</p>
-        </div>
-        <div class="card">
-          <h3>Rubber Ducky Attack with Raspberry Pi Pico</h3>
-          <p>HID-based keystroke injection extracting Wi-Fi credentials and exfiltrating via webhook, showing risks of physical access and HID spoofing.</p>
-        </div>
-      </section>
+      <article class="card" tabindex="0">
+        <h3>Rubber Ducky Attack with Raspberry Pi Pico</h3>
+        <p>HID-based keystroke injection extracting Wi-Fi credentials and exfiltrating via webhook, showing risks of physical access and HID spoofing.</p>
+      </article>
+    </section>
 
-      <section id="skills" class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="card">
-          <p style="color: var(--text-color-primary);">**Blue Team**</p>
-          <ul>
-            <li class="list-item">Threat hunting with Windows Event Logs & Sysmon, EDR telemetry analysis</li>
-            <li class="list-item">Tracking persistence, triaging alerts in Bitdefender & Sophos</li>
-            <li class="list-item">Monitoring network traffic & firewall/IDS alerts, MITRE ATT&CK mapping</li>
-          </ul>
-          <br>
-          <p style="color: var(--text-color-primary);">**Red Team**</p>
-          <ul>
-            <li class="list-item">Advanced AD enumeration, ACL abuse, Kerberos attacks (Kerberoasting, Golden/Silver Tickets)</li>
-            <li class="list-item">Lateral movement, domain persistence, EDR evasion including MDE bypass</li>
-            <li class="list-item">Web app pentesting (XSS, SQLi, SSRF), local privilege escalation on Windows/Linux</li>
-          </ul>
-          <br>
-          <p style="color: var(--text-color-primary);">**Basics & Frameworks**</p>
-          <ul>
-            <li class="list-item">Network fundamentals (TCP/IP, DNS, DHCP), Windows & Linux OS basics, firewall & IDS/IPS concepts</li>
-            <li class="list-item">SIEM basics, incident response, cybersecurity policies</li>
-            <li class="list-item">Python and PowerShell scripting</li>
-            <li class="list-item">MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10, Diamond Model</li>
-          </ul>
-        </div>
-      </section>
+    <section id="education" tabindex="-1" aria-label="Education" class="hidden">
+      <h2>Education</h2>
+      <p><strong>Sri Indu College of Engineering and Technology, Hyderabad, India</strong><br />Bachelor of Technology in Cyber Security (Nov 2021 – May 2025)</p>
+      <p><strong>Sri Chaitanya Junior College, Hyderabad, India</strong><br />Intermediate Public Education (2019 – 2021)</p>
+    </section>
 
-      <section id="education" class="section">
-        <h2 class="section-title">Education</h2>
-        <div class="card">
-          <p><strong>Sri Indu College of Engineering and Technology, Hyderabad, India</strong><br>Bachelor of Technology in Cyber Security (Nov 2021 – May 2025)</p>
-          <p><strong>Sri Chaitanya Junior College, Hyderabad, India</strong><br>Intermediate Public Education (2019 – 2021)</p>
-        </div>
-      </section>
+    <section id="contact" tabindex="-1" aria-label="Contact" class="hidden">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:akshu4875@gmail.com">akshu4875@gmail.com</a></p>
+      <div class="contact-links" aria-label="social media links">
+        <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://medium.com/@akshu4875" target="_blank" rel="noopener" title="Medium"><i class="fab fa-medium"></i></a>
+        <a href="https://github.com/akshu4875" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </section>
+  </div>
 
-      <section id="contact" class="section">
-        <h2 class="section-title">Contact</h2>
-        <div class="card">
-          <p>Email: <a href="mailto:akshu4875@gmail.com" style="color: var(--accent-color); text-decoration: none; transition: color 0.3s ease;">akshu4875@gmail.com</a></p>
-          <div class="contact-links" aria-label="social media links">
-            <a href="https://linkedin.com/in/akshay-73b6bb254/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://medium.com/@akshu4875" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
-            <a href="https://github.com/akshu4875" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
+  <div id="hero-img" aria-hidden="true"></div>
+</main>
 
-  <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 90, /* Offset for fixed header */
-            behavior: 'smooth'
-          });
-        }
-      });
+<script>
+  // Matrix binary rain effect
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let columns;
+  let drops;
+
+  function setupCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    columns = Math.floor(width / 20);
+    drops = new Array(columns).fill(1);
+  }
+  setupCanvas();
+
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(12,15,23,0.1)';
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.fillStyle = 'rgba(0, 255, 153, 0.7)';
+    ctx.font = '18px "Fira Code", monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+      let text = String.fromCharCode(0x30A0 + Math.random() * 96);
+      ctx.fillText(text, i * 20, drops[i] * 20);
+
+      if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+
+  setInterval(drawMatrix, 45);
+
+  // Navigation buttons + smooth scroll + active highlight
+  const buttons = document.querySelectorAll('nav button.nav-btn');
+  const sections = Array.from(buttons).map(btn => document.getElementById(btn.dataset.target));
+
+  function setActiveButton(activeBtn) {
+    buttons.forEach(btn => btn.classList.remove('active'));
+    activeBtn.classList.add('active');
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = document.getElementById(btn.dataset.target);
+      section.scrollIntoView({ behavior: 'smooth' });
+      setActiveButton(btn);
+      section.focus();
     });
-  </script>
+  });
+
+  // On scroll, highlight nav & fade in sections
+  window.addEventListener('scroll', () => {
+    let scrollPos = window.scrollY + window.innerHeight / 3;
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      if (scrollPos >= sections[i].offsetTop) {
+        setActiveButton(buttons[i]);
+        break;
+      }
+    }
+
+    // Reveal sections smoothly
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < window.innerHeight * 0.85) {
+        section.classList.add('visible');
+      }
+    });
+  });
+
+  // Initial reveal of first section
+  window.dispatchEvent(new Event('scroll'));
+</script>
 
 </body>
 </html>
